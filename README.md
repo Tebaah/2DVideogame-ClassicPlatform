@@ -1,28 +1,73 @@
-## Resumen del Proyecto
+# Time to Hit
 
-Este proyecto es un juego de plataformas 2D inspirado en Mario Bros, desarrollado en Godot 4 utilizando C#. El jugador controla un personaje que se desplaza lateralmente y salta para evitar enemigos y recolectar monedas, con el objetivo de llegar al final de cada nivel. El juego cuenta con:
+## Descripción
 
-### Pantalla de inicio y selección de niveles
+**Time to Hit** es un juego de plataformas 2D en el que el jugador debe recorrer el nivel, eliminar enemigos y alcanzar la meta dentro de un tiempo limitado. Para avanzar al siguiente nivel, es necesario cumplir con dos condiciones: llegar a la meta antes de que el tiempo se acabe y alcanzar una cantidad mínima de puntos eliminando enemigos.
 
-Se muestra un título y logo que transiciona automáticamente a un menú de selección, donde se desbloquean progresivamente tres niveles.
+## Características Principales
 
-### Mecánicas de juego
+- Juego de plataformas 2D con vista lateral.
+- Mecánica de tiempo limitado por nivel.
+- Eliminación de enemigos para acumular puntaje.
+- Desbloqueo progresivo de niveles.
+- Estética basada en figuras geométricas abstractas.
 
-- **Personaje principal**: Movimiento lateral y salto, implementado con `CharacterBody2D`, `Sprite2D`, `CollisionShape2D` y `AnimationPlayer`.
-- **Enemigos**: Patrón de movimiento simple (izquierda a derecha) que se elimina al ser saltado.
+## Mecánicas del Juego
 
-### Elementos del entorno
+### Jugador
 
-- **Plataformas**: Estáticas y móviles para la construcción de niveles.
-- **Coleccionables (monedas)**: Aumentan el puntaje al ser recolectados.
+- Movimiento de izquierda a derecha.
+- Salto normal.
+- Eliminar enemigos saltando sobre ellos.
 
-### Interfaz gráfica (HUD)
+### Enemigos
 
-Visualización del tiempo, puntaje y vidas.
+- Movimiento de izquierda a derecha.
+- Se eliminan cuando el jugador salta sobre ellos.
+- Otorgan puntaje al ser eliminados.
 
-### Pantallas adicionales
+### Niveles
 
-- **Pantalla de pausa**: Con opciones para reanudar o salir.
-- **Pantalla de game over**: Reinicia el juego.
+- Cada nivel tiene un tiempo límite.
+- El jugador debe eliminar enemigos para obtener puntos.
+- Para avanzar, el jugador debe alcanzar la meta antes de que el tiempo se acabe y tener la cantidad mínima de puntos requerida.
 
-El desarrollo se guía por un cronograma detallado que abarca desde la implementación de las mecánicas básicas hasta la optimización final y pruebas, asegurando una experiencia de juego coherente y pulida. Este proyecto utiliza figuras básicas y abstractas para centrarse en la programación y las mecánicas, dejando la posibilidad de ampliar el aspecto visual en futuras iteraciones.
+## Interfaz Gráfica
+
+- Tiempo restante.
+- Puntaje actual.
+- Cantidad de vidas.
+
+## Elementos del Nivel
+
+- Plataformas estáticas y móviles.
+- Coleccionables (monedas que aumentan el puntaje).
+
+## Pantallas del Juego
+
+- **Pantalla de Inicio**: Muestra el título y el logo del juego. Después de cierto tiempo, cambia automáticamente a la pantalla de selección de nivel.
+- **Pantalla de Selección de Nivel**: Permite seleccionar un nivel desbloqueado.
+- **Pantalla de Juego**: Contiene la jugabilidad principal.
+- **Pantalla de Pausa**: Permite reanudar o salir al menú principal.
+- **Pantalla de Game Over**: Muestra la opción de reiniciar el juego desde el inicio.
+
+## Tecnologías Utilizadas
+
+- **Motor**: Godot 4
+- **Lenguaje de programación**: C#
+- **Diseño de elementos visuales**: Inkscape
+
+## Notas Técnicas
+
+- **Jugador**: Utiliza un nodo `CharacterBody2D`, un `AnimationPlayer` para animaciones y un script en C# para gestionar movimiento y colisiones.
+- **Enemigos**: Basados en `CharacterBody2D`, con movimiento simple de izquierda a derecha.
+- **Interfaz**: Implementada con nodos `CanvasLayer` y `Label`.
+- **Tiempo y puntaje**: Gestionados mediante un script global.
+
+## Objetivo del Proyecto
+
+El objetivo principal del desarrollo de este juego es mejorar la programación en C# y la implementación de mecánicas en Godot 4, priorizando la lógica del juego sobre el arte gráfico.
+
+## Créditos
+
+**Desarrollador**: Tebaah
