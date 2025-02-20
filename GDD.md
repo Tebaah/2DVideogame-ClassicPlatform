@@ -1,151 +1,156 @@
-# Game Design Document (GDD) – [Nombre del Juego]
+# Game Design Document (GDD) – Time to Hit
 
-1. **Resumen del Juego**
-    - **Género**: Plataforma 2D, inspirado en Mario Bros.
-    - **Plataforma**: Godot 4 utilizando C#.
-    - **Visión General**:
-      El jugador controla un personaje que se desplaza por niveles repletos de plataformas (estáticas y móviles), evitando enemigos y recolectando monedas para aumentar el puntaje. El objetivo es llegar al final del nivel, superando obstáculos y enemigos mediante el salto.
+## 1. Resumen del Juego
 
-2. **Mecánicas de Juego**
-    - **Personaje Principal**
-      - **Movimiento**:
-         - Se desplaza de izquierda a derecha.
-         - Salto normal (único, sin doble salto en esta versión inicial).
-      - **Implementación Técnica**:
-         - Nodo principal: `CharacterBody2D`
-         - Componentes: `Sprite2D`, `CollisionShape2D`, `AnimationPlayer`
-         - Script (C#): Control del movimiento (modificando `Velocity.x` y `Velocity.y`), aplicación de gravedad y verificación de colisiones (usando `IsOnFloor()`).
+**Género:** Plataforma 2D con elementos de acción y contrarreloj.  
+**Plataforma:** Desarrollado en Godot 4 utilizando C#.
 
-    - **Enemigos**
-      - **Movimiento**:
-         - Patrón de movimiento simple de izquierda a derecha.
-      - **Interacción con el Jugador**:
-         - Son eliminados al saltar sobre ellos.
-      - **Implementación Técnica**:
-         - Nodo principal: `CharacterBody2D`
-         - Componentes: `Sprite2D`, `CollisionShape2D`
-         - Script (C#): Gestión del movimiento automático, detección de colisiones y cambio de dirección en límites, detección de "golpe" del jugador (puede utilizar un `Area2D` para detectar el impacto del salto).
+### Visión General
 
-    - **Elementos del Nivel**
-      - **Plataformas**
-         - **Plataformas Estáticas**:
-            - Fijas en el entorno.
-            - Nodo: `StaticBody2D` con `Sprite2D` y `CollisionShape2D`.
-         - **Plataformas Móviles**:
-            - Se mueven entre dos puntos definidos.
-            - Nodo: `Node2D` conteniendo un `StaticBody2D`.
-            - Movimiento: Se implementa con `Tween` o mediante lógica en `_Process()`.
+"Time to Hit" es un juego de plataformas 2D donde el jugador debe completar cada nivel en un tiempo limitado, eliminando la mayor cantidad de enemigos posible para acumular el puntaje necesario y avanzar al siguiente nivel.
 
-      - **Coleccionables (Monedas)**
-         - **Funcionalidad**:
-            - Al recolectar, aumentan el puntaje del jugador.
-         - **Implementación Técnica**:
-            - Nodo principal: `Area2D`
-            - Componentes: `Sprite2D`, `CollisionShape2D`, `AnimationPlayer`
-            - Script (C#): Detecta la colisión con el jugador y actualiza el puntaje, además de gestionar la animación y desaparición de la moneda.
+Cada nivel presenta:
 
-3. **Interfaces y Pantallas**
-    - **Pantalla de Inicio**
-      - **Contenido**:
-         - Título y logo del juego.
-      - **Transición**:
-         - Automática a la pantalla de selección tras un temporizador.
-      - **Implementación Técnica**:
-         - Nodo principal: `Control`
-         - Componentes: `Label` (título), `TextureRect` (logo) y `Timer` para la transición.
+- **Tiempo límite:** Un cronómetro cuenta los segundos disponibles.
+- **Puntaje objetivo:** Se deben eliminar suficientes enemigos para alcanzar la puntuación mínima.
 
-    - **Pantalla de Selección de Nivel**
-      - **Características**:
-         - Sistema de desbloqueo progresivo (3 niveles disponibles).
-      - **Implementación Técnica**:
-         - Nodo principal: `Control`
-         - Componentes:
-            - `Button` para cada nivel.
-            - `Label` para mostrar estado (desbloqueado/bloqueado).
-         - Script (C#): Control de desbloqueo y selección de niveles según progreso.
+Si el jugador no cumple ambas condiciones, deberá repetir el nivel.
 
-    - **Interfaz Gráfica (HUD)**
-      - **Elementos a mostrar**:
-         - Tiempo transcurrido.
-         - Puntaje acumulado.
-         - Vidas restantes.
-      - **Implementación Técnica**:
-         - Nodo principal: `CanvasLayer`
-         - Componentes:
-            - Múltiples `Label` para cada dato.
-            - (Opcional) `TextureProgressBar` para alguna representación visual del progreso.
-         - Script (C#): Actualización en tiempo real de los datos.
+## 2. Mecánicas de Juego
 
-    - **Pantalla de Pausa**
-      - **Opciones**:
-         - Reanudar el juego.
-         - Salir del juego (o volver al menú principal).
-      - **Implementación Técnica**:
-         - Nodo principal: `Control`
-         - Componentes:
-            - `Panel` para el fondo.
-            - `Button` para cada acción (reanudar, salir).
-         - Script (C#): Gestión de la pausa y reanudación del juego.
+### 2.1. Personaje Principal
 
-    - **Pantalla de Game Over**
-      - **Funcionalidad**:
-         - Mostrar mensaje de “Game Over”.
-         - Opción para reiniciar el juego.
-      - **Implementación Técnica**:
-         - Nodo principal: `Control`
-         - Componentes:
-            - `Label` para el mensaje.
-            - `Button` para reiniciar.
-         - Script (C#): Reinicia el nivel y resetea los parámetros del juego.
+**Movimiento:**
 
-4. **Cronograma de Desarrollo Detallado**
-    - **Semana 1-2: Movimiento del Personaje y Cámara**
-      - **Tareas**:
-         - Configurar el nodo `CharacterBody2D` para el personaje.
-         - Implementar el movimiento de izquierda a derecha en el script C#.
-         - Programar la mecánica de salto y la aplicación de gravedad.
-         - Configurar la cámara (`Camera2D`) para seguir al personaje.
+- Desplazamiento lateral (izquierda y derecha).
+- Salto estándar.
 
-    - **Semana 3-4: Enemigos y Pantallas Iniciales**
-      - **Enemigos**:
-         - Crear la clase de enemigos basada en `CharacterBody2D`.
-         - Programar el movimiento automático y la detección de colisiones para eliminar al enemigo al ser saltado.
-      - **Pantalla de Inicio y Selección**:
-         - Diseñar la pantalla de inicio usando `Control`, `Label`, `TextureRect` y `Timer`.
-         - Crear la pantalla de selección con botones y sistema de desbloqueo progresivo.
+**Interacción con el entorno:**
 
-    - **Semana 5-6: Elementos del Nivel, Coleccionables y HUD**
-      - **Plataformas**:
-         - Implementar plataformas estáticas (`StaticBody2D`) y móviles (con `Tween` o lógica en `_Process()`).
-      - **Monedas**:
-         - Crear coleccionables con `Area2D`, configurar colisiones y actualizar puntaje al ser recogidas.
-      - **HUD**:
-         - Desarrollar la interfaz en `CanvasLayer` para mostrar tiempo, puntaje y vidas.
+- Puede pisar plataformas estáticas y móviles.
+- Eliminación de enemigos al saltar sobre ellos.
 
-    - **Semana 7-8: Pantallas de Pausa y Game Over**
-      - **Pantalla de Pausa**:
-         - Implementar una pantalla de pausa con `Control`, `Panel` y botones (reanudar y salir).
-         - Programar la lógica para detener y reanudar el juego.
-      - **Pantalla de Game Over**:
-         - Crear la pantalla de game over con un mensaje y botón para reiniciar el juego.
+**Implementación Técnica:**
 
-    - **Semana 9-10: Pulido, Optimización y Pruebas**
-      - **Optimización**:
-         - Revisar y corregir errores en colisiones y mecánicas de movimiento.
-         - Optimizar la física y el rendimiento general.
-      - **Ajustes de Jugabilidad**:
-         - Balancear la velocidad de enemigos y la dificultad de niveles.
-         - Añadir efectos sonoros básicos si es necesario.
-      - **Pruebas Finales**:
-         - Testear cada nivel y pantalla para asegurar una experiencia coherente y fluida.
+- **Nodo principal:** CharacterBody2D.
+- **Componentes:** Sprite2D, CollisionShape2D, AnimationPlayer.
+- **Script (C#):** Manejo de movimiento, gravedad, colisiones y mecánicas de ataque.
 
-5. **Notas Técnicas y Herramientas**
-    - **Motor**: Godot 4
-    - **Lenguaje de Programación**: C#
-    - **Estilo Visual**: Figuras básicas y abstractas para centrar el desarrollo en la programación y mecánicas.
-    - **Control de Versiones**: Se recomienda utilizar Git para gestionar el desarrollo y las actualizaciones del juego.
+### 2.2. Enemigos
 
-6. **Consideraciones Adicionales**
-    - Revisar la documentación oficial de Godot 4 para aprovechar las nuevas funcionalidades del motor en la versión C#.
-    - Planificar iteraciones de prueba para cada módulo (personaje, enemigos, HUD) para identificar y solucionar problemas de jugabilidad.
-    - Si en el futuro se desea ampliar el juego, considerar la implementación de power-ups y mecánicas adicionales.
+**Movimiento:**
+
+- Patrón de movimiento de izquierda a derecha.
+
+**Interacción con el Jugador:**
+
+- Son eliminados al ser golpeados por el jugador.
+- Otorgan puntos al ser eliminados.
+
+**Implementación Técnica:**
+
+- **Nodo principal:** CharacterBody2D.
+- **Componentes:** Sprite2D, CollisionShape2D.
+- **Script (C#):** Movimiento automático, detección de colisiones y asignación de puntos.
+
+### 2.3. Sistema de Puntaje y Tiempo
+
+**Tiempo Limitado:**
+
+- Cada nivel tiene un tiempo específico para ser completado.
+
+**Puntaje Necesario:**
+
+- Se debe alcanzar un puntaje mínimo eliminando enemigos.
+
+**Implementación Técnica:**
+
+- **Nodo principal:** Timer para gestionar el tiempo del nivel.
+- **Script (C#):** Control del temporizador, actualización del puntaje y verificación de condiciones para completar el nivel.
+
+## 3. Interfaces y Pantallas
+
+### 3.1. Pantalla de Inicio
+
+**Contenido:**
+
+- Título y logo del juego "Time to Hit".
+
+**Transición:**
+
+- Automática a la pantalla de selección de nivel después de unos segundos.
+
+**Implementación Técnica:**
+
+- **Nodo principal:** Control.
+- **Componentes:** Label (título), TextureRect (logo), Timer para la transición.
+
+### 3.2. Pantalla de Selección de Nivel
+
+**Características:**
+
+- Desbloqueo progresivo de niveles.
+- Muestra el puntaje requerido y el tiempo disponible para cada nivel.
+
+**Implementación Técnica:**
+
+- **Nodo principal:** Control.
+- **Componentes:** Button para cada nivel, Label para información de puntaje y tiempo.
+- **Script (C#):** Gestión del desbloqueo de niveles y navegación.
+
+### 3.3. Interfaz Gráfica (HUD)
+
+**Elementos a mostrar:**
+
+- Temporizador del nivel.
+- Puntaje actual.
+- Vidas restantes.
+
+**Implementación Técnica:**
+
+- **Nodo principal:** CanvasLayer.
+- **Componentes:** Label para cada elemento.
+- **Script (C#):** Actualización en tiempo real de la información mostrada.
+
+### 3.4. Pantalla de Pausa
+
+**Opciones:**
+
+- Reanudar juego.
+- Salir al menú principal.
+
+**Implementación Técnica:**
+
+- **Nodo principal:** Control.
+- **Componentes:** Panel de fondo, Button para cada opción.
+- **Script (C#):** Control de pausa y navegación de menús.
+
+### 3.5. Pantalla de Game Over
+
+**Funcionalidad:**
+
+- Mostrar mensaje de "Game Over".
+- Opción para reiniciar el nivel o regresar al menú principal.
+
+**Implementación Técnica:**
+
+- **Nodo principal:** Control.
+- **Componentes:** Label para el mensaje, Button para opciones.
+- **Script (C#):** Reinicio del nivel y gestión de navegación.
+
+## 4. Notas Técnicas y Herramientas
+
+- **Motor de desarrollo:** Godot 4.
+- **Lenguaje de programación:** C#.
+- **Formato de sprites y assets:** Figuras abstractas para priorizar mecánicas.
+
+**Herramientas adicionales:**
+
+- Editor de código: Visual Studio Code o JetBrains Rider.
+- Control de versiones: Git y GitHub.
+
+## 5. Consideraciones Finales
+
+- **Dificultad progresiva:** Cada nivel será más desafiante en cuanto a tiempo disponible y cantidad de enemigos.
+- **Posible expansión:** Incorporar más tipos de enemigos y power-ups.
+- **Testing:** Se realizarán pruebas en cada fase del desarrollo para asegurar estabilidad y jugabilidad.
