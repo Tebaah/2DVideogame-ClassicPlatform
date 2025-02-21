@@ -29,11 +29,12 @@ Si el jugador no cumple ambas condiciones, deberá repetir el nivel.
 
 - Puede pisar plataformas estáticas y móviles.
 - Eliminación de enemigos al saltar sobre ellos.
+- Puede obtener coleccionables al colisionar con ellos.
 
 **Implementación Técnica:**
 
 - **Nodo principal:** CharacterBody2D.
-- **Componentes:** Sprite2D, CollisionShape2D, AnimationPlayer.
+- **Componentes:** Sprite2D, CollisionShape2D, AnimationPlayer, StateMachine.
 - **Script (C#):** Manejo de movimiento, gravedad, colisiones y mecánicas de ataque.
 
 ### 2.2. Enemigos
@@ -50,7 +51,7 @@ Si el jugador no cumple ambas condiciones, deberá repetir el nivel.
 **Implementación Técnica:**
 
 - **Nodo principal:** CharacterBody2D.
-- **Componentes:** Sprite2D, CollisionShape2D.
+- **Componentes:** Sprite2D, CollisionShape2D, StateMachine.
 - **Script (C#):** Movimiento automático, detección de colisiones y asignación de puntos.
 
 ### 2.3. Sistema de Puntaje y Tiempo
