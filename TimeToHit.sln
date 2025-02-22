@@ -1,6 +1,10 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeToHit", "TimeToHit.csproj", "{3F85DBA0-B545-4A2E-856E-4AECF9D54D8B}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeToHit", "TimeToHit.csproj", "{64A0CDF8-6DF7-4CD2-A7C4-21B85A6444A9}"
+>>>>>>> feature/home-screen
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +13,20 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<<<<<<< HEAD
 		{3F85DBA0-B545-4A2E-856E-4AECF9D54D8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3F85DBA0-B545-4A2E-856E-4AECF9D54D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F85DBA0-B545-4A2E-856E-4AECF9D54D8B}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
 		{3F85DBA0-B545-4A2E-856E-4AECF9D54D8B}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
 		{3F85DBA0-B545-4A2E-856E-4AECF9D54D8B}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
 		{3F85DBA0-B545-4A2E-856E-4AECF9D54D8B}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+=======
+		{64A0CDF8-6DF7-4CD2-A7C4-21B85A6444A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64A0CDF8-6DF7-4CD2-A7C4-21B85A6444A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64A0CDF8-6DF7-4CD2-A7C4-21B85A6444A9}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{64A0CDF8-6DF7-4CD2-A7C4-21B85A6444A9}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{64A0CDF8-6DF7-4CD2-A7C4-21B85A6444A9}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{64A0CDF8-6DF7-4CD2-A7C4-21B85A6444A9}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+>>>>>>> feature/home-screen
 	EndGlobalSection
 EndGlobal

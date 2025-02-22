@@ -1,5 +1,6 @@
 using Godot;
 using System;
+<<<<<<< HEAD
 using System.Threading.Tasks;
 
 public partial class GameManager : Node
@@ -26,4 +27,9 @@ public partial class GameManager : Node
     }
 
     #endregion
+=======
+
+public partial class GameManager : Node
+{
+>>>>>>> feature/home-screen
 }
