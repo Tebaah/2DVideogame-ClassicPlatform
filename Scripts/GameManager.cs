@@ -14,10 +14,10 @@ public partial class GameManager : Node
 
     #region Custom Methods
 
-    public async Task TimerTochangeScene()
+    public async void TimerTochangeScene(string scene)
     {
         await ToSignal(GetTree().CreateTimer(3), "timeout");
-        // TODO: Add ChangeBetweenScene method
+        ChangeBetweenScene(scene);
     }
 
     public void ChangeBetweenScene(string scene)
