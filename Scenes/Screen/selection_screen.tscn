@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cd7dvrciftevs"]
 
-[ext_resource type="Script" path="res://Scripts/SelectionScreenController.cs" id="1_kvs26"]
-[ext_resource type="Script" path="res://Scripts/SelectButton.cs" id="2_saw6t"]
+[ext_resource type="Script" path="res://Scripts/SelectionScreenController.cs" id="1_fcq4y"]
+[ext_resource type="Script" path="res://Scripts/SelectButton.cs" id="2_xux53"]
 
 [node name="SelectionScreen" type="Node2D" node_paths=PackedStringArray("buttons")]
-script = ExtResource("1_kvs26")
+script = ExtResource("1_fcq4y")
 buttons = [NodePath("Control/ButtonContainer/Level01"), NodePath("Control/ButtonContainer/Level02"), NodePath("Control/ButtonContainer/Level03")]
 
 [node name="Control" type="Control" parent="."]
@@ -52,7 +52,7 @@ alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "level 01"
-script = ExtResource("2_saw6t")
+script = ExtResource("2_xux53")
 
 [node name="Level02" type="Button" parent="Control/ButtonContainer"]
 layout_mode = 2
@@ -60,14 +60,14 @@ theme_override_font_sizes/font_size = 30
 disabled = true
 text = "level 02
 "
-script = ExtResource("2_saw6t")
+script = ExtResource("2_xux53")
 
 [node name="Level03" type="Button" parent="Control/ButtonContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 disabled = true
 text = "level 03"
-script = ExtResource("2_saw6t")
+script = ExtResource("2_xux53")
 
 [connection signal="pressed" from="Control/ButtonContainer/Level01" to="Control/ButtonContainer/Level01" method="OnSelectButtonPressed"]
 [connection signal="pressed" from="Control/ButtonContainer/Level02" to="Control/ButtonContainer/Level02" method="OnSelectButtonPressed"]
