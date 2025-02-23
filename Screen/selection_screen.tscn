@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/SelectionScreenController.cs" id="1_kvs26"]
 [ext_resource type="Script" path="res://Scripts/SelectButton.cs" id="2_saw6t"]
 
-[node name="SelectionScreen" type="Node2D"]
+[node name="SelectionScreen" type="Node2D" node_paths=PackedStringArray("buttons")]
 script = ExtResource("1_kvs26")
+buttons = [NodePath("Control/ButtonContainer/Level01"), NodePath("Control/ButtonContainer/Level02"), NodePath("Control/ButtonContainer/Level03")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

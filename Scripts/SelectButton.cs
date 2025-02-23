@@ -6,6 +6,8 @@ public partial class SelectButton : Button
     #region Variables
 
     GameManager _gameManager;
+    public LevelController levelController;
+    Button button;
 
     #endregion
 
@@ -13,7 +15,7 @@ public partial class SelectButton : Button
 
     public override void _Ready()
     {
-        _gameManager = GetNode<GameManager>("/root/GameManager");
+        _gameManager = GetNode<GameManager>("/root/GameManager"); 
     }
     #endregion
 
@@ -21,7 +23,7 @@ public partial class SelectButton : Button
 
     public void OnSelectButtonPressed()
     {
-        GD.Print($"Enter on level {this.Name}");
+        _gameManager.ChangeBetweenScene(SceneResources.gameScreen);
     }
 
     #endregion
