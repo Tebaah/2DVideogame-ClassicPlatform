@@ -38,4 +38,4 @@ text = "Time:15sec"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="LevelInstance" type="Node2D" parent="."]
