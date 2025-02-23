@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd7dvrciftevs"]
+
+[ext_resource type="Script" path="res://Scripts/SelectionScreenController.cs" id="1_kvs26"]
+[ext_resource type="Script" path="res://Scripts/SelectButton.cs" id="2_saw6t"]
+
+[node name="SelectionScreen" type="Node2D" node_paths=PackedStringArray("buttons")]
+script = ExtResource("1_kvs26")
+buttons = [NodePath("Control/ButtonContainer/Level01"), NodePath("Control/ButtonContainer/Level02"), NodePath("Control/ButtonContainer/Level03")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 768.0
+
+[node name="Background" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TitleOf" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 58
+text = "Time To Hit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.5
+offset_top = -15.5
+offset_right = 104.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Level01" type="Button" parent="Control/ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "level 01"
+script = ExtResource("2_saw6t")
+
+[node name="Level02" type="Button" parent="Control/ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "level 02
+"
+script = ExtResource("2_saw6t")
+
+[node name="Level03" type="Button" parent="Control/ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "level 03"
+script = ExtResource("2_saw6t")
+
+[connection signal="pressed" from="Control/ButtonContainer/Level01" to="Control/ButtonContainer/Level01" method="OnSelectButtonPressed"]
+[connection signal="pressed" from="Control/ButtonContainer/Level02" to="Control/ButtonContainer/Level02" method="OnSelectButtonPressed"]
+[connection signal="pressed" from="Control/ButtonContainer/Level03" to="Control/ButtonContainer/Level03" method="OnSelectButtonPressed"]
