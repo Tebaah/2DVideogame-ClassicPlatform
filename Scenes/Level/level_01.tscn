@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://qu456accxluj"]
+[gd_scene load_steps=9 format=4 uid="uid://qu456accxluj"]
 
 [ext_resource type="Texture2D" uid="uid://djxdwmbe0kora" path="res://Assets/Levels/Tilemaplevels01-03.png" id="1_8qpbv"]
 [ext_resource type="Texture2D" uid="uid://bwqrp7rv4p54u" path="res://icon.svg" id="2_figr2"]
+[ext_resource type="Script" path="res://Scripts/Components/CheckPointLevel.cs" id="2_sxctv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w3up5"]
 texture = ExtResource("1_8qpbv")
@@ -40,7 +41,8 @@ tile_set = SubResource("TileSet_1d5ck")
 
 [node name="CheckPointLevel" type="Area2D" parent="."]
 position = Vector2(3552, 608)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.497692, 0.50249)
+script = ExtResource("2_sxctv")
 
 [node name="Sprite2D" type="Sprite2D" parent="CheckPointLevel"]
 position = Vector2(0, -1)
@@ -48,3 +50,5 @@ texture = ExtResource("2_figr2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckPointLevel"]
 shape = SubResource("RectangleShape2D_ebeu5")
+
+[connection signal="body_entered" from="CheckPointLevel" to="CheckPointLevel" method="OnBodyEntered"]
