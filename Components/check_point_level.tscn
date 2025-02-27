@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5j0i7er4it0r"]
+
+[ext_resource type="Script" path="res://Scripts/Components/CheckPointLevel.cs" id="1_2l6k2"]
+[ext_resource type="Texture2D" uid="uid://bwqrp7rv4p54u" path="res://icon.svg" id="2_q1qq7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebeu5"]
+size = Vector2(128, 128)
+
+[node name="CheckPointLevel" type="Area2D"]
+position = Vector2(3552, 608)
+scale = Vector2(0.497692, 0.50249)
+script = ExtResource("1_2l6k2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("2_q1qq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ebeu5")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

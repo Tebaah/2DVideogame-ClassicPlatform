@@ -1,9 +1,12 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class GameManager : Node
 {
     #region Variables
+
+    Dictionary<string, bool> completedLevels = new();
 
     #endregion
 
@@ -22,6 +25,20 @@ public partial class GameManager : Node
     public void ChangeBetweenScene(string scene)
     {
         GetTree().ChangeSceneToFile(scene);
+    }
+
+    public void SetLevelCompleted(string levelName)
+    {
+        if (!completedLevels.ContainsKey(levelName))
+        {
+            completedLevels[levelName] = true;
+            GD.Print($"Level {levelName} completed");
+        }
+    }
+
+    public bool IsLevelCompleted(string levelName)
+    {
+        return completedLevels.ContainsKey(levelName) && completedLevels[levelName];
     }
 
     #endregion

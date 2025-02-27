@@ -5,10 +5,8 @@
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 13.0
-offset_top = 1.0
-offset_right = 1293.0
-offset_bottom = 769.0
+offset_right = 1280.0
+offset_bottom = 768.0
 
 [node name="InformationContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1
