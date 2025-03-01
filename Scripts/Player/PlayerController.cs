@@ -5,6 +5,9 @@ public partial class PlayerController : CharacterBody2D
 {
     #region Variables
 
+    [Export] public double speed;
+    [Export] public double jumpForce;
+    public Vector2 velocity;
     public AnimationPlayer animations;
 
     #endregion
