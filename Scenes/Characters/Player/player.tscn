@@ -1,15 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg2o3s6fuf1a7"]
+[gd_scene load_steps=11 format=3 uid="uid://bg2o3s6fuf1a7"]
 
 [ext_resource type="Texture2D" uid="uid://j06w80ngy7fg" path="res://Assets/Characters/Player/PlayerTileset.png" id="1_l85o8"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.cs" id="1_na1gh"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="2_fiy7r"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerStatusIdle.cs" id="4_pgkq4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47rqi"]
 size = Vector2(46, 46)
 
 [sub_resource type="Animation" id="Animation_ij0u7"]
 resource_name = "Idle"
-length = 0.4
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,7 +18,7 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.3),
+"times": PackedFloat32Array(0.2, 0.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Vector2i(0, 2), Vector2i(1, 2)]
@@ -125,6 +126,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(248, 152)
 script = ExtResource("1_na1gh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -152,6 +154,7 @@ nodeToControl = NodePath("..")
 defaultState = NodePath("StateIdle")
 
 [node name="StateIdle" type="Node" parent="StateMachine"]
+script = ExtResource("4_pgkq4")
 
 [node name="StateWalk" type="Node" parent="StateMachine"]
 
