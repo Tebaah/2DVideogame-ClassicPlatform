@@ -16,7 +16,7 @@ public partial class StateMachine : Node
     {
         if(nodeToControl == null)
         {
-            GD.PrintErr("nodetocontro no esta asignado");
+            GD.PrintErr("nodeToControl is not assigned");
             return;
         }
 
@@ -32,6 +32,12 @@ public partial class StateMachine : Node
 
     public void StateStart()
     {
+        if (currentState == null || nodeToControl == null)
+        {
+            GD.PrintErr("currentState or nodeToControl is null in StateStart");
+            return;
+        }
+
         GD.Print("StateMachine ", nodeToControl.Name, " State Start ", currentState.Name);
 
         currentState.nodeToControl = nodeToControl;
@@ -47,11 +53,19 @@ public partial class StateMachine : Node
 
     public void ChangeTo(string newState)
     {
-        if(currentState != null && currentState.HasMethod("AtEndState"))
+        if (currentState != null && currentState.HasMethod("AtEndState"))
         {
             currentState.AtEndState();
         }
+
         currentState = GetNode<StateBase>(newState);
+
+        if (currentState == null)
+        {
+            GD.PrintErr("Failed to change to state: ", newState);
+            return;
+        }
+
         StateStart();
     }
 

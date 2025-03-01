@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg2o3s6fuf1a7"]
+[gd_scene load_steps=9 format=3 uid="uid://bg2o3s6fuf1a7"]
 
 [ext_resource type="Texture2D" uid="uid://j06w80ngy7fg" path="res://Assets/Characters/Player/PlayerTileset.png" id="1_l85o8"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="2_fiy7r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47rqi"]
 size = Vector2(46, 46)
@@ -132,6 +133,7 @@ vframes = 4
 frame = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 rotation = 0.785397
 shape = SubResource("RectangleShape2D_47rqi")
 
@@ -143,7 +145,10 @@ autoplay = "Idle"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("nodeToControl", "defaultState")]
+script = ExtResource("2_fiy7r")
+nodeToControl = NodePath("..")
+defaultState = NodePath("StateIdle")
 
 [node name="StateIdle" type="Node" parent="StateMachine"]
 
