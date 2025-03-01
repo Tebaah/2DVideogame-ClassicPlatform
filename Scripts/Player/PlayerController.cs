@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PlayerController : Node
+public partial class PlayerController : CharacterBody2D
 {
     #region Variables
 

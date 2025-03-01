@@ -9,9 +9,6 @@ public partial class PlayerStatusIdle : PlayerStatusBase
 
     #region Godot Methods   
 
-    public override void AtStartState()
-    {
-    }
     #endregion  
 
     #region Methods 
