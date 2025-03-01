@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PlayerStatusWalking : PlayerStatusBase
+public partial class PlayerStatusWalking : PlayerStatusGravity
 {
     #region Variables
 
@@ -12,6 +12,7 @@ public partial class PlayerStatusWalking : PlayerStatusBase
     public override void OnPhysicsProcess(double delta)
     {
         player.velocity.X = (float)(Input.GetAxis("Left", "Right") * player.speed * delta);
+        ApplyGravity(delta);
         player.Velocity = player.velocity;
         player.MoveAndSlide();
 

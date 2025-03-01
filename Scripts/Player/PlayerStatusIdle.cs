@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PlayerStatusIdle : PlayerStatusBase
+public partial class PlayerStatusIdle : PlayerStatusGravity
 {
     #region Variables
 
@@ -9,6 +9,15 @@ public partial class PlayerStatusIdle : PlayerStatusBase
 
     #region Godot Methods   
 
+    public override void OnPhysicsProcess(double delta)
+    {
+        player.velocity.X = 0;
+        ApplyGravity(delta);
+        player.Velocity = player.velocity;
+        player.MoveAndSlide();
+
+        player.animations.Play("Idle");
+    }
     public override void OnInput(InputEvent @event)
     {
         if (Input.IsActionPressed("Left") || Input.IsActionPressed("Right"))
