@@ -31,9 +31,20 @@ public partial class PlayerStatusBase : StateBase
         gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
     }
 
+    public override void AtEndState()
+    {
+
+    }
+
     #endregion
 
     #region Methods
+
+    public override void OnProcess(double delta) { }
+    public override void OnPhysicsProcess(double delta) { }
+    public override void OnInput(InputEvent @event) { }
+    public override void OnUnhandledInput(InputEvent @event) { }
+    public override void OnUnhandledKeyInput(InputEvent @event) { }
 
     #endregion
 }
