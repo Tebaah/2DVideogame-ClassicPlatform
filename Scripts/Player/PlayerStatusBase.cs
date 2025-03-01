@@ -6,7 +6,7 @@ public partial class PlayerStatusBase : StateBase
     #region Variables
 
     public PlayerController player;
-    public double gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+    public double gravity;
 
     #endregion
 
@@ -19,14 +19,16 @@ public partial class PlayerStatusBase : StateBase
             GD.PrintErr("nodeToControl is null in AtStartState");
             return;
         }
-        
-        player = nodeToControl.GetNode<PlayerController>(nodeToControl.GetPath());
+
+        player = nodeToControl as PlayerController;
 
         if (player == null)
         {
             GD.PrintErr("player is null in AtStartState");
             return;
         }
+
+        gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
     }
 
     #endregion
