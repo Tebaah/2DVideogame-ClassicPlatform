@@ -24,7 +24,7 @@ public partial class PlayerStatusJumping : PlayerStatusGravity
   
         if (player.velocity.Y > 0)
         {
-            stateMachine.ChangeTo("StateFall");
+            stateMachine.ChangeTo(PlayerStatusName.fall);
         }
     }
 

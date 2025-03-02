@@ -15,11 +15,11 @@ public partial class PlayerStatusFalling : PlayerStatusGravity
         {
             if (Input.IsActionPressed("Left") || Input.IsActionPressed("Right"))
             {
-                stateMachine.ChangeTo("StateWalk");
+                stateMachine.ChangeTo(PlayerStatusName.walk);
             }
             else
             {
-                stateMachine.ChangeTo("StateIdle");
+                stateMachine.ChangeTo(PlayerStatusName.idle);
             }
         }
 

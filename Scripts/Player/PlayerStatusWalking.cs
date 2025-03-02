@@ -23,11 +23,11 @@ public partial class PlayerStatusWalking : PlayerStatusGravity
     {
         if (!Input.IsActionPressed("Left") && !Input.IsActionPressed("Right"))
         {
-            stateMachine.ChangeTo("StateIdle");
+            stateMachine.ChangeTo(PlayerStatusName.idle);
         }
         else if (Input.IsActionJustPressed("Jump"))
         {
-            stateMachine.ChangeTo("StateJump");
+            stateMachine.ChangeTo(PlayerStatusName.jump);
         }
     }
 

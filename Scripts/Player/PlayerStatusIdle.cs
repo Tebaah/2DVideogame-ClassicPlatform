@@ -22,11 +22,11 @@ public partial class PlayerStatusIdle : PlayerStatusGravity
     {
         if (Input.IsActionPressed("Left") || Input.IsActionPressed("Right"))
         {
-            stateMachine.ChangeTo("StateWalk");
+            stateMachine.ChangeTo(PlayerStatusName.walk);
         }
         else if (Input.IsActionJustPressed("Jump"))
         {
-            stateMachine.ChangeTo("StateJump");
+            stateMachine.ChangeTo(PlayerStatusName.jump);
         }
     }
     #endregion  
