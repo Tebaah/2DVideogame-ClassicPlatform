@@ -22,9 +22,9 @@ public partial class PlayerStatusJumping : PlayerStatusGravity
         player.Velocity = player.velocity;
         player.MoveAndSlide();
   
-        if (player.velocity.Y > 0 && player.IsOnFloor())
+        if (player.velocity.Y > 0)
         {
-            stateMachine.ChangeTo("StateIdle");
+            stateMachine.ChangeTo("StateFall");
         }
     }
 
