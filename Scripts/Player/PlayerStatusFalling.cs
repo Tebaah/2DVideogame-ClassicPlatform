@@ -11,9 +11,9 @@ public partial class PlayerStatusFalling : PlayerStatusGravity
 
     public override void OnPhysicsProcess(double delta)
     {
-        if (player.velocity.Y > 0 && player.IsOnFloor())
+        if (player.velocity.Y >= 0 && player.IsOnFloor())
         {
-            if (Input.IsActionJustPressed("Left") || Input.IsActionJustPressed("Right"))
+            if (Input.IsActionPressed("Left") || Input.IsActionPressed("Right"))
             {
                 stateMachine.ChangeTo("StateWalk");
             }
