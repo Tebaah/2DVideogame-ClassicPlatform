@@ -24,6 +24,10 @@ public partial class PlayerStatusIdle : PlayerStatusGravity
         {
             stateMachine.ChangeTo("StateWalk");
         }
+        else if (Input.IsActionJustPressed("Jump"))
+        {
+            stateMachine.ChangeTo("StateJump");
+        }
     }
     #endregion  
 
