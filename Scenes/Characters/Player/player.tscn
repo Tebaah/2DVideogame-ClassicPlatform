@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bg2o3s6fuf1a7"]
+[gd_scene load_steps=14 format=3 uid="uid://bg2o3s6fuf1a7"]
 
 [ext_resource type="Texture2D" uid="uid://j06w80ngy7fg" path="res://Assets/Characters/Player/PlayerTileset.png" id="1_l85o8"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.cs" id="1_na1gh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/PlayerStatusIdle.cs" id="4_pgkq4"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerStatusWalking.cs" id="5_gyoss"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerStatusJumping.cs" id="6_tqym5"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerStatusFalling.cs" id="7_82acb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47rqi"]
 size = Vector2(46, 46)
@@ -183,3 +184,6 @@ script = ExtResource("5_gyoss")
 
 [node name="StateJump" type="Node" parent="StateMachine"]
 script = ExtResource("6_tqym5")
+
+[node name="StateFall" type="Node" parent="StateMachine"]
+script = ExtResource("7_82acb")
