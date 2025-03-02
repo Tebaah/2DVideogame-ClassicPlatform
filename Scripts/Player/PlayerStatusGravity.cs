@@ -15,7 +15,10 @@ public partial class PlayerStatusGravity : PlayerStatusBase
 
     public void ApplyGravity(double delta)
     {
-        player.velocity.Y += (float)(gravity * delta);
+        if (!player.IsOnFloor())
+        {    
+            player.velocity.Y += (float)(gravity * delta);
+        }
     }
 
     #endregion
