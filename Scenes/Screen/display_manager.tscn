@@ -1,0 +1,123 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmxa75queyiyh"]
+
+[ext_resource type="Script" path="res://Scripts/Screens/DisplayManager.cs" id="1_hbnin"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="1_ojrgb"]
+[ext_resource type="Script" path="res://Scripts/Screens/HomeScreenState.cs" id="2_fbpsm"]
+[ext_resource type="Script" path="res://Scripts/Screens/SelectScreenState.cs" id="3_4xs2b"]
+[ext_resource type="Script" path="res://Scripts/Screens/SplashScreenState.cs" id="4_g54rs"]
+
+[node name="DisplayManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_hbnin")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("nodeToControl", "defaultState")]
+script = ExtResource("1_ojrgb")
+nodeToControl = NodePath("..")
+defaultState = NodePath("HomeScreen")
+
+[node name="HomeScreen" type="Node" parent="StateMachine"]
+script = ExtResource("2_fbpsm")
+
+[node name="HomeScreen" type="Control" parent="StateMachine/HomeScreen"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="StateMachine/HomeScreen/HomeScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="StateMachine/HomeScreen/HomeScreen"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Hardmode Studio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SplashScreen" type="Node" parent="StateMachine"]
+script = ExtResource("4_g54rs")
+
+[node name="SplashScreen" type="Control" parent="StateMachine/SplashScreen"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="StateMachine/SplashScreen/SplashScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.129558, 0.129558, 0.129558, 1)
+
+[node name="SelectionScreen" type="Node" parent="StateMachine"]
+script = ExtResource("3_4xs2b")
+
+[node name="SelectionScreen" type="Control" parent="StateMachine/SelectionScreen"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="StateMachine/SelectionScreen/SelectionScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="StateMachine/SelectionScreen/SelectionScreen"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 75
+text = "Time to Hit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StateMachine/SelectionScreen/SelectionScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="StateMachine/SelectionScreen/SelectionScreen/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Start"
