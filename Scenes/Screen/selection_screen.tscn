@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cd7dvrciftevs"]
 
-[ext_resource type="Script" path="res://Scripts/SelectionScreenController.cs" id="1_fcq4y"]
-[ext_resource type="Script" path="res://Scripts/SelectButton.cs" id="2_xux53"]
+[ext_resource type="Script" uid="uid://bfkedcvgr1rmk" path="res://Scripts/SelectionScreenController.cs" id="1_fcq4y"]
+[ext_resource type="Script" uid="uid://1aunobluxuw2" path="res://Scripts/SelectButton.cs" id="2_xux53"]
 
 [node name="SelectionScreen" type="Node2D" node_paths=PackedStringArray("buttons")]
 script = ExtResource("1_fcq4y")

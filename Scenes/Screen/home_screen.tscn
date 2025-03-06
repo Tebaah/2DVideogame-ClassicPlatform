@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cb32qxbwf2quq"]
 
-[ext_resource type="Script" path="res://Scripts/HomeScreenController.cs" id="1_knht2"]
+[ext_resource type="Script" uid="uid://btbqjwx6lsihj" path="res://Scripts/HomeScreenController.cs" id="1_knht2"]
 
 [node name="HomeScreen" type="Node2D"]
 script = ExtResource("1_knht2")

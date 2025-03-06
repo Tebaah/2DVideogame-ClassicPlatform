@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bmxa75queyiyh"]
 
-[ext_resource type="Script" path="res://Scripts/Screens/DisplayManager.cs" id="1_hbnin"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="1_ojrgb"]
-[ext_resource type="Script" path="res://Scripts/Screens/HomeScreenState.cs" id="2_fbpsm"]
-[ext_resource type="Script" path="res://Scripts/Screens/SelectScreenState.cs" id="3_4xs2b"]
-[ext_resource type="Script" path="res://Scripts/Screens/SplashScreenState.cs" id="4_g54rs"]
+[ext_resource type="Script" uid="uid://cgx2nvtkmmqyq" path="res://Scripts/Screens/DisplayManager.cs" id="1_hbnin"]
+[ext_resource type="Script" uid="uid://mpryqscv4lcc" path="res://Scripts/StateMachine/StateMachine.cs" id="1_ojrgb"]
+[ext_resource type="Script" uid="uid://dqpn5n4euen10" path="res://Scripts/Screens/HomeScreenState.cs" id="2_fbpsm"]
+[ext_resource type="Script" uid="uid://bkxr0aee3qvwd" path="res://Scripts/Screens/SelectScreenState.cs" id="3_4xs2b"]
+[ext_resource type="Script" uid="uid://c0tg0nxpgpn0i" path="res://Scripts/Screens/SplashScreenState.cs" id="4_g54rs"]
 
 [node name="DisplayManager" type="Control"]
 layout_mode = 3
