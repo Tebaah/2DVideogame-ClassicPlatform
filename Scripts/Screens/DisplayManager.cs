@@ -22,6 +22,7 @@ public partial class DisplayManager : Control
         homeScreen.Visible = true;
         selectionScreen.Visible = false;
         splashScreen.Visible = false;
+
     }
 
     #endregion
