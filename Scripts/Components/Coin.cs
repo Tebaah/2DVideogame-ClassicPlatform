@@ -1,11 +1,13 @@
 using Godot;
 using System;
+using System.Security.Principal;
 
 public partial class Coin : Area2D
 {
     #region Variables
 
     private AudioStreamPlayer2D _audio;
+    [Export] private int _pointCoin;
     #endregion
 
     #region Godot Methods
@@ -23,6 +25,7 @@ public partial class Coin : Area2D
     {
         if (body.IsInGroup("Player"))
         {
+            GetTree().Root.GetNode<LevelManager>("Level1").AddScore(_pointCoin);
             GD.Print("Coin collected!"); // TODO incorporate into score system and audio
             QueueFree();
         }
