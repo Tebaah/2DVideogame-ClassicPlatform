@@ -141,6 +141,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(0, -2)
 collision_mask = 14
 script = ExtResource("1_na1gh")
 speed = 10000.0

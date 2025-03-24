@@ -21,7 +21,7 @@ public partial class PlayerStatusJumping : PlayerStatusGravity
 
         player.animations.Play("Jump");
         ApplyGravity(delta);
-
+        
         player.Velocity = player.velocity;
         player.MoveAndSlide();
   
