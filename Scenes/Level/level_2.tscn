@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://cv0mvxdih64im"]
 
 [ext_resource type="Texture2D" uid="uid://djxdwmbe0kora" path="res://Assets/Levels/Tilemaplevels01-03.png" id="1_t2a81"]
-[ext_resource type="PackedScene" uid="uid://c5j0i7er4it0r" path="res://Components/check_point_level.tscn" id="2_c6kcg"]
+[ext_resource type="PackedScene" uid="uid://c5j0i7er4it0r" path="res://Scenes/Components/check_point_level.tscn" id="2_c6kcg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w3up5"]
 texture = ExtResource("1_t2a81")
