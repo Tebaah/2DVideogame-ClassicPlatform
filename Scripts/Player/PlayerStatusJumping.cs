@@ -16,9 +16,12 @@ public partial class PlayerStatusJumping : PlayerStatusGravity
             player.velocity.Y = (float)(-player.jumpForce * delta);
         }
 
+        player.velocity.X = (float)(Input.GetAxis("Left", "Right") * player.speed * delta);
+
 
         player.animations.Play("Jump");
         ApplyGravity(delta);
+        
         player.Velocity = player.velocity;
         player.MoveAndSlide();
   

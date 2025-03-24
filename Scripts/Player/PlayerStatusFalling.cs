@@ -23,6 +23,8 @@ public partial class PlayerStatusFalling : PlayerStatusGravity
             }
         }
 
+        player.velocity.X = (float)(Input.GetAxis("Left", "Right") * player.speed * delta);
+
         ApplyGravity(delta);
         player.Velocity = player.velocity;
         player.MoveAndSlide();
