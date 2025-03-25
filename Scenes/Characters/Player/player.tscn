@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://bg2o3s6fuf1a7"]
 
 [ext_resource type="Texture2D" uid="uid://j06w80ngy7fg" path="res://Assets/Characters/Player/PlayerTileset.png" id="1_l85o8"]
-[ext_resource type="Script" uid="uid://d0gwi1vx0hp2b" path="res://Scripts/Player/PlayerController.cs" id="1_na1gh"]
+[ext_resource type="Script" uid="uid://d0gwi1vx0hp2b" path="res://Scripts/Characters/Player/PlayerController.cs" id="1_na1gh"]
 [ext_resource type="Script" uid="uid://mpryqscv4lcc" path="res://Scripts/StateMachine/StateMachine.cs" id="2_fiy7r"]
-[ext_resource type="Script" uid="uid://cosraa211g6mt" path="res://Scripts/Player/PlayerStatusIdle.cs" id="4_pgkq4"]
-[ext_resource type="Script" uid="uid://bunghcrgrjyxf" path="res://Scripts/Player/PlayerStatusWalking.cs" id="5_gyoss"]
-[ext_resource type="Script" uid="uid://bnw30gmo8i4pd" path="res://Scripts/Player/PlayerStatusJumping.cs" id="6_tqym5"]
-[ext_resource type="Script" uid="uid://45hib564kwis" path="res://Scripts/Player/PlayerStatusFalling.cs" id="7_82acb"]
+[ext_resource type="Script" uid="uid://cosraa211g6mt" path="res://Scripts/Characters/Player/PlayerStatusIdle.cs" id="4_pgkq4"]
+[ext_resource type="Script" uid="uid://bunghcrgrjyxf" path="res://Scripts/Characters/Player/PlayerStatusWalking.cs" id="5_gyoss"]
+[ext_resource type="Script" uid="uid://bnw30gmo8i4pd" path="res://Scripts/Characters/Player/PlayerStatusJumping.cs" id="6_tqym5"]
+[ext_resource type="Script" uid="uid://45hib564kwis" path="res://Scripts/Characters/Player/PlayerStatusFalling.cs" id="7_82acb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47rqi"]
 size = Vector2(46, 46)
