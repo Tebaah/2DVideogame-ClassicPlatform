@@ -41,6 +41,12 @@ public partial class LevelManager : Node2D
         EmitSignal(nameof(OnScoreUpdated), score);
     }
 
+    public void Discountscore(int points)
+    {
+        score -= points;
+        EmitSignal(nameof(OnScoreUpdated), score);
+    }
+
     public async void StartTimer()
     {
         await ToSignal(GetTree().CreateTimer(2.0f), "timeout");
