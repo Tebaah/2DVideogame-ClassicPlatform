@@ -12,6 +12,7 @@ public partial class EnemyController : CharacterBody2D
     public Vector2 velocity;
     public AnimationPlayer animations;
 
+
     #endregion
 
     #region Godot Methods
@@ -25,6 +26,7 @@ public partial class EnemyController : CharacterBody2D
         finalPosition = initialPosition - distance;
         
         animations = GetNode<AnimationPlayer>("AnimationPlayer");
+
     }
 
     #endregion

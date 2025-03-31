@@ -11,12 +11,8 @@ public partial class EnemyStateWalking : EnemyStateGravity
 
     public override void OnPhysicsProcess(double delta)
     {
-        // enemy.velocity.X = (float)(-enemy.speed * delta);
         ApplyGravity(delta);
         Move(delta);
-        // enemy.Velocity = enemy.velocity;
-        // enemy.MoveAndSlide();
-
     }
 
     #endregion  
