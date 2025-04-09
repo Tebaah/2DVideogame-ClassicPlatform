@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmxa75queyiyh"]
+[gd_scene load_steps=12 format=3 uid="uid://bmxa75queyiyh"]
 
 [ext_resource type="Script" uid="uid://cgx2nvtkmmqyq" path="res://Scripts/Screens/DisplayManager.cs" id="1_hbnin"]
 [ext_resource type="Script" uid="uid://mpryqscv4lcc" path="res://Scripts/StateMachine/StateMachine.cs" id="1_ojrgb"]
@@ -7,7 +7,10 @@
 [ext_resource type="Script" uid="uid://bkxr0aee3qvwd" path="res://Scripts/Screens/States/SelectScreenState.cs" id="5_ybwhl"]
 [ext_resource type="Script" uid="uid://bkovp72lp7dac" path="res://Scripts/Screens/ButtonSelection/ButtonSelection.cs" id="6_oxapm"]
 [ext_resource type="PackedScene" uid="uid://qu456accxluj" path="res://Scenes/Level/level_1.tscn" id="7_ypqxs"]
-[ext_resource type="PackedScene" uid="uid://cv0mvxdih64im" path="res://Scenes/Level/level_2.tscn" id="8_45k8s"]
+[ext_resource type="PackedScene" uid="uid://dh74q41caysny" path="res://Scenes/Level/level_2.tscn" id="8_45k8s"]
+[ext_resource type="PackedScene" uid="uid://ddmmnxt58b5xa" path="res://Scenes/Level/level_3.tscn" id="9_82yli"]
+[ext_resource type="PackedScene" uid="uid://bprhkt2jsqhk2" path="res://Scenes/Level/level_4.tscn" id="10_sn0gx"]
+[ext_resource type="PackedScene" uid="uid://b7ounhljtoptk" path="res://Scenes/Level/level_5.tscn" id="11_f8w76"]
 
 [node name="DisplayManager" type="Control"]
 layout_mode = 3
@@ -146,7 +149,7 @@ size_flags_stretch_ratio = 0.1
 theme_override_font_sizes/font_size = 50
 text = "Level03"
 script = ExtResource("6_oxapm")
-levelGame = ExtResource("8_45k8s")
+levelGame = ExtResource("9_82yli")
 _button = NodePath(".")
 
 [node name="Level4" type="Button" parent="StateMachine/SelectionScreen/SelectionScreen/HBoxContainer" node_paths=PackedStringArray("_button")]
@@ -156,7 +159,7 @@ size_flags_stretch_ratio = 0.1
 theme_override_font_sizes/font_size = 50
 text = "Level04"
 script = ExtResource("6_oxapm")
-levelGame = ExtResource("8_45k8s")
+levelGame = ExtResource("10_sn0gx")
 _button = NodePath(".")
 
 [node name="Level5" type="Button" parent="StateMachine/SelectionScreen/SelectionScreen/HBoxContainer" node_paths=PackedStringArray("_button")]
@@ -166,7 +169,7 @@ size_flags_stretch_ratio = 0.1
 theme_override_font_sizes/font_size = 50
 text = "Level05"
 script = ExtResource("6_oxapm")
-levelGame = ExtResource("8_45k8s")
+levelGame = ExtResource("11_f8w76")
 _button = NodePath(".")
 
 [connection signal="pressed" from="StateMachine/SelectionScreen/SelectionScreen/HBoxContainer/Level1" to="StateMachine/SelectionScreen/SelectionScreen/HBoxContainer/Level1" method="OnButtonPressed"]
