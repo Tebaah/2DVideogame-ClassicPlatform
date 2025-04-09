@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://qu456accxluj"]
+[gd_scene load_steps=10 format=4 uid="uid://qu456accxluj"]
 
 [ext_resource type="Texture2D" uid="uid://djxdwmbe0kora" path="res://Assets/Levels/Tilemaplevels01-03.png" id="1_8qpbv"]
 [ext_resource type="Script" uid="uid://c4kskla0t181y" path="res://Scripts/GameManager/LevelManager.cs" id="1_knogg"]
 [ext_resource type="PackedScene" uid="uid://cels1u31wuc8r" path="res://Scenes/Coin/coin.tscn" id="2_wtlyx"]
 [ext_resource type="PackedScene" uid="uid://c5j0i7er4it0r" path="res://Scenes/Components/check_point_level.tscn" id="3_m5hwo"]
 [ext_resource type="Script" uid="uid://bp2kvhq8wqca2" path="res://Scripts/ScoreInterface.cs" id="3_uoico"]
-[ext_resource type="PackedScene" uid="uid://bg2o3s6fuf1a7" path="res://Scenes/Characters/Player/player.tscn" id="4_aofeo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b828a"]
 texture = ExtResource("1_8qpbv")
@@ -106,9 +105,5 @@ _pointCoin = 10
 
 [node name="CheckPointLevel" parent="." instance=ExtResource("3_m5hwo")]
 position = Vector2(1184, 544)
-
-[node name="Player" parent="." instance=ExtResource("4_aofeo")]
-position = Vector2(232, 616)
-collision_mask = 30
 
 [connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

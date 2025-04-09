@@ -1,13 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://dh74q41caysny"]
+[gd_scene load_steps=10 format=4 uid="uid://bprhkt2jsqhk2"]
 
-[ext_resource type="Script" uid="uid://c4kskla0t181y" path="res://Scripts/GameManager/LevelManager.cs" id="1_ppjc3"]
-[ext_resource type="Texture2D" uid="uid://djxdwmbe0kora" path="res://Assets/Levels/Tilemaplevels01-03.png" id="1_t2a81"]
-[ext_resource type="PackedScene" uid="uid://c5j0i7er4it0r" path="res://Scenes/Components/check_point_level.tscn" id="2_c6kcg"]
-[ext_resource type="Script" uid="uid://bp2kvhq8wqca2" path="res://Scripts/ScoreInterface.cs" id="3_nraam"]
-[ext_resource type="PackedScene" uid="uid://cels1u31wuc8r" path="res://Scenes/Coin/coin.tscn" id="4_n0bsh"]
+[ext_resource type="Script" uid="uid://c4kskla0t181y" path="res://Scripts/GameManager/LevelManager.cs" id="1_ovbyi"]
+[ext_resource type="Texture2D" uid="uid://djxdwmbe0kora" path="res://Assets/Levels/Tilemaplevels01-03.png" id="2_q7fr7"]
+[ext_resource type="Script" uid="uid://bp2kvhq8wqca2" path="res://Scripts/ScoreInterface.cs" id="3_lb1hf"]
+[ext_resource type="PackedScene" uid="uid://cels1u31wuc8r" path="res://Scenes/Coin/coin.tscn" id="4_x3iwh"]
+[ext_resource type="PackedScene" uid="uid://c5j0i7er4it0r" path="res://Scenes/Components/check_point_level.tscn" id="5_tym0j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b828a"]
-texture = ExtResource("1_t2a81")
+texture = ExtResource("2_q7fr7")
 texture_region_size = Vector2i(64, 64)
 1:1/0 = 0
 2:1/0 = 0
@@ -21,7 +21,7 @@ navigation_layer_0/layers = 0
 sources/0 = SubResource("TileSetAtlasSource_b828a")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k541i"]
-texture = ExtResource("1_t2a81")
+texture = ExtResource("2_q7fr7")
 texture_region_size = Vector2i(64, 64)
 3:1/0 = 0
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -37,8 +37,8 @@ physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 3
 sources/2 = SubResource("TileSetAtlasSource_k541i")
 
-[node name="Level2" type="Node2D"]
-script = ExtResource("1_ppjc3")
+[node name="Level4" type="Node2D"]
+script = ExtResource("1_ovbyi")
 pointsToWin = 10
 timeToWin = 10
 metadata/_edit_vertical_guides_ = [1280.0, 2560.0, 3840.0]
@@ -55,7 +55,7 @@ tile_set = SubResource("TileSet_1d5ck")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("3_nraam")
+script = ExtResource("3_lb1hf")
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -91,11 +91,11 @@ vertical_alignment = 1
 
 [node name="Coins" type="Node" parent="."]
 
-[node name="Coin" parent="Coins" instance=ExtResource("4_n0bsh")]
+[node name="Coin" parent="Coins" instance=ExtResource("4_x3iwh")]
 position = Vector2(448, 608)
 _pointCoin = 10
 
-[node name="Coin2" parent="Coins" instance=ExtResource("4_n0bsh")]
+[node name="Coin2" parent="Coins" instance=ExtResource("4_x3iwh")]
 position = Vector2(960, 512)
 _pointCoin = 10
 
@@ -103,7 +103,7 @@ _pointCoin = 10
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="CheckPointLevel" parent="." instance=ExtResource("2_c6kcg")]
+[node name="CheckPointLevel" parent="." instance=ExtResource("5_tym0j")]
 position = Vector2(1184, 544)
 
 [connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]
