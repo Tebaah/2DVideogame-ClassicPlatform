@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bg2o3s6fuf1a7"]
+[gd_scene load_steps=18 format=3 uid="uid://bg2o3s6fuf1a7"]
 
 [ext_resource type="Script" uid="uid://d0gwi1vx0hp2b" path="res://Scripts/Characters/Player/PlayerController.cs" id="1_na1gh"]
 [ext_resource type="Texture2D" uid="uid://beif725dssw54" path="res://Assets/Characters/Player/tilemap-characters_packed.png" id="2_dxcao"]
@@ -10,6 +10,25 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47rqi"]
 size = Vector2(20, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxcao"]
+size = Vector2(14, 3)
+
+[sub_resource type="Animation" id="Animation_dxcao"]
+resource_name = "Fall"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
 
 [sub_resource type="Animation" id="Animation_ij0u7"]
 resource_name = "Idle"
@@ -28,8 +47,24 @@ tracks/0/keys = {
 "values": [2]
 }
 
-[sub_resource type="Animation" id="Animation_eu0m4"]
+[sub_resource type="Animation" id="Animation_8gg06"]
 resource_name = "Jump"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_eu0m4"]
+resource_name = "JumpLeft"
 length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -38,10 +73,26 @@ tracks/0/path = NodePath("Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333),
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.785398, -1.5708, -2.35619, -3.14159, -3.92699, -4.71239, -5.49779, -6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_1mdwi"]
+resource_name = "JumpRight"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.785398, 1.5708, 2.35619, 3.14159, 3.92699, 4.71239, 5.49779, 6.28319]
 }
 
 [sub_resource type="Animation" id="Animation_y6nsa"]
@@ -90,8 +141,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rh7uc"]
 _data = {
+&"Fall": SubResource("Animation_dxcao"),
 &"Idle": SubResource("Animation_ij0u7"),
-&"Jump": SubResource("Animation_eu0m4"),
+&"Jump": SubResource("Animation_8gg06"),
+&"JumpLeft": SubResource("Animation_eu0m4"),
+&"JumpRight": SubResource("Animation_1mdwi"),
 &"RESET": SubResource("Animation_y6nsa"),
 &"Walk": SubResource("Animation_ej0ps")
 }
@@ -111,6 +165,12 @@ texture_filter = 1
 texture = ExtResource("2_dxcao")
 hframes = 9
 vframes = 3
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_dxcao")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
