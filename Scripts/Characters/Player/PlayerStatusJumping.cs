@@ -12,7 +12,8 @@ public partial class PlayerStatusJumping : PlayerStatusGravity
     public override void OnPhysicsProcess(double delta)
     {
 
-        JumpingAnimationDirection();
+        // JumpingAnimationDirection(); TODO: review correct implementation
+        player.animations.Play("Jump");
 
         ImpulseForTheJump(delta);
 
@@ -29,7 +30,7 @@ public partial class PlayerStatusJumping : PlayerStatusGravity
 
     #endregion
 
-    #region Methods
+    #region Custom Methods
 
     private void JumpingAnimationDirection()
     {
