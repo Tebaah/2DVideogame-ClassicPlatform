@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ckhhipmelthnb"]
+[gd_scene load_steps=14 format=3 uid="uid://ckhhipmelthnb"]
 
 [ext_resource type="Script" uid="uid://comhd6m28i306" path="res://Scripts/Characters/Enemy/EnemyController.cs" id="1_rmt0q"]
 [ext_resource type="Script" uid="uid://mpryqscv4lcc" path="res://Scripts/StateMachine/StateMachine.cs" id="2_c7fqo"]
@@ -42,8 +42,25 @@ tracks/0/keys = {
 "values": [18, 19]
 }
 
+[sub_resource type="Animation" id="Animation_lij3b"]
+resource_name = "Dead"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_67xvd"]
 _data = {
+&"Dead": SubResource("Animation_lij3b"),
 &"RESET": SubResource("Animation_ofthe"),
 &"Walk": SubResource("Animation_3ekg1")
 }
