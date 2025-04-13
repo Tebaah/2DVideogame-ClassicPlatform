@@ -14,6 +14,7 @@ public partial class PlayerStatusJumping : PlayerStatusGravity
 
         // JumpingAnimationDirection(); TODO: review correct implementation
         player.animations.Play("Jump");
+        // player.audio.Play();
 
         ImpulseForTheJump(delta);
 
@@ -53,6 +54,7 @@ public partial class PlayerStatusJumping : PlayerStatusGravity
         if (player.IsOnFloor() && player.velocity.Y > 0)
         {
             player.velocity.Y = (float)(-player.jumpForce * delta);
+            player.audio.Play();
         }
     }
 
