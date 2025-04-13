@@ -66,7 +66,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ekg1"]
-size = Vector2(18, 32)
+size = Vector2(4, 8)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
@@ -97,7 +97,7 @@ collision_layer = 32
 script = ExtResource("3_lij3b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(23, 0)
+position = Vector2(-8, 8)
 shape = SubResource("RectangleShape2D_3ekg1")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("nodeToControl", "defaultState")]
