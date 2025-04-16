@@ -75,7 +75,7 @@ sources/1 = SubResource("TileSetAtlasSource_4snqv")
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_knogg")
-pointsToWin = 10
+pointsToWin = 20
 timeToWin = 10
 LimitRight = 504
 metadata/_edit_vertical_guides_ = [1280.0, 2560.0, 3840.0, 504.0]
@@ -134,11 +134,11 @@ vertical_alignment = 1
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("2_wtlyx")]
-position = Vector2(448, 608)
+position = Vector2(232, 136)
 _pointCoin = 10
 
 [node name="Coin2" parent="Coins" instance=ExtResource("2_wtlyx")]
-position = Vector2(960, 512)
+position = Vector2(440, 96)
 _pointCoin = 10
 
 [node name="Enemies" type="Node" parent="."]
@@ -146,7 +146,8 @@ _pointCoin = 10
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="CheckPointLevel" parent="." instance=ExtResource("3_m5hwo")]
-position = Vector2(1184, 544)
+position = Vector2(328, 147)
+scale = Vector2(0.36, 0.48)
 
 [node name="Player" parent="." instance=ExtResource("6_uoico")]
 position = Vector2(104, 152)
