@@ -166,6 +166,7 @@ tile_map_data = PackedByteArray("AAABAAkAAQACAAEAAAACAAkAAQACAAEAAAADAAkAAQACAAE
 tile_set = SubResource("TileSet_1d5ck")
 
 [node name="Environment" type="TileMapLayer" parent="."]
+texture_filter = 1
 tile_map_data = PackedByteArray("AAACAAUAAQAFAAYAAAAAAAgAAQAFAAYAAAAGAAkAAQAEAAYAAAAPAAgAAQAEAAYAAAAbAAMAAQAEAAYAAAAJAAkAAQARAAYAAAAJAAgAAQARAAQAAAAIAAgAAQARAAIAAAAKAAgAAQATAAIAAAAIAAcAAQARAAEAAAAJAAcAAQASAAEAAAAKAAcAAQATAAEAAAAIAAYAAQARAAAAAAAJAAYAAQASAAAAAAAKAAYAAQATAAAAAAA=")
 tile_set = SubResource("TileSet_4snqv")
 
@@ -226,8 +227,7 @@ _pointCoin = 10
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="CheckPointLevel" parent="." instance=ExtResource("3_m5hwo")]
-position = Vector2(328, 147)
-scale = Vector2(0.36, 0.48)
+position = Vector2(328, 153)
 
 [node name="Player" parent="." instance=ExtResource("6_uoico")]
 position = Vector2(104, 152)
