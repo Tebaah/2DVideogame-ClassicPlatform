@@ -20,6 +20,12 @@ public partial class HitBox : Area2D
             GetTree().Root.GetNode<LevelManager>("Level1").Discountscore(5);
             GD.Print("HitBox: Player hit!");
         }
+
+        if (body.IsInGroup("Enemy"))
+        {
+            GD.Print("Hitbox collided with enemy!"); // TODO: implement damage system
+            body.QueueFree();
+        }
     }
     #endregion
 

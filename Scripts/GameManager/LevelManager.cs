@@ -11,7 +11,9 @@ public partial class LevelManager : Node2D
     [Export] public int timeToWin;
     public Label timeLabel;
     private Timer timer;
-    
+
+    [Export] public int LimitLeft;
+    [Export] public int LimitRight;
     [Signal] public delegate void OnScoreUpdatedEventHandler(int score);
 
     #endregion

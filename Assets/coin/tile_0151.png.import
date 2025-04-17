@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djxdwmbe0kora"
-path="res://.godot/imported/Tilemaplevels01-03.png-915b29d5d02a78ac4d1bcfcdec75bdfc.ctex"
+uid="uid://c0fdwc82mr4gb"
+path="res://.godot/imported/tile_0151.png-d4aca5207b21c156c5a2ec8d0e3c97b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Levels/Tilemaplevels01-03.png"
-dest_files=["res://.godot/imported/Tilemaplevels01-03.png-915b29d5d02a78ac4d1bcfcdec75bdfc.ctex"]
+source_file="res://Assets/coin/tile_0151.png"
+dest_files=["res://.godot/imported/tile_0151.png-d4aca5207b21c156c5a2ec8d0e3c97b1.ctex"]
 
 [params]
 

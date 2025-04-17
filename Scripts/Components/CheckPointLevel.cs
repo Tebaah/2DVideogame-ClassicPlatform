@@ -20,7 +20,7 @@ public partial class CheckPointLevel : Area2D
             GD.PrintErr("GameManager not found in the scene tree.");
             return;
         }
-        _levelManager = GetNode<LevelManager>("/root/Level1");
+        _levelManager = GetNode<LevelManager>($"/root/{GetParent().Name}");
         if (_levelManager == null)
         {
             GD.PrintErr("LevelManager not found in the scene tree.");
@@ -35,7 +35,7 @@ public partial class CheckPointLevel : Area2D
     
     public void OnBodyEntered(Node2D body)
     {
-        if (body.IsInGroup("Player") && _levelManager.score == _levelManager.pointsToWin)
+        if (body.IsInGroup("Player") && _levelManager.score >= _levelManager.pointsToWin)
         {
             _gameManager.MarkLevelAsCompleted(GetParent().Name);
             _gameManager.SaveProcess();

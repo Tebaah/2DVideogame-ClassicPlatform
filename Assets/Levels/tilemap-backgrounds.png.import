@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf3tnbah54pad"
-path="res://.godot/imported/coin.png-342b34fd893a0c5d79d3fc382606807b.ctex"
+uid="uid://brwt4jknnh357"
+path="res://.godot/imported/tilemap-backgrounds.png-6f00e47c182ea25b0070b8142b7d1bc5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/coin/coin.png"
-dest_files=["res://.godot/imported/coin.png-342b34fd893a0c5d79d3fc382606807b.ctex"]
+source_file="res://Assets/Levels/tilemap-backgrounds.png"
+dest_files=["res://.godot/imported/tilemap-backgrounds.png-6f00e47c182ea25b0070b8142b7d1bc5.ctex"]
 
 [params]
 
