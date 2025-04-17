@@ -39,7 +39,7 @@ public partial class CheckPointLevel : Area2D
     {
         if (body.IsInGroup("Player") && _levelManager.score >= _levelManager.pointsToWin)
         {
-            _animatedSprite.Play("defautl");
+            _animatedSprite.Play("default");
             _gameManager.MarkLevelAsCompleted(GetParent().Name);
             _gameManager.SaveProcess();
         }
