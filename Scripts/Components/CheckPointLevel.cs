@@ -7,6 +7,7 @@ public partial class CheckPointLevel : Area2D
 
     private GameManager _gameManager;
     private LevelManager _levelManager;
+    private AnimatedSprite2D _animatedSprite;
 
     #endregion
 
@@ -26,6 +27,7 @@ public partial class CheckPointLevel : Area2D
             GD.PrintErr("LevelManager not found in the scene tree.");
             return;
         }
+        _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
     }
 
@@ -37,6 +39,7 @@ public partial class CheckPointLevel : Area2D
     {
         if (body.IsInGroup("Player") && _levelManager.score >= _levelManager.pointsToWin)
         {
+            _animatedSprite.Play("defautl");
             _gameManager.MarkLevelAsCompleted(GetParent().Name);
             _gameManager.SaveProcess();
         }
