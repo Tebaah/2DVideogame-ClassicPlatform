@@ -8,9 +8,9 @@
 [ext_resource type="Script" uid="uid://bkovp72lp7dac" path="res://Scripts/Screens/ButtonSelection/ButtonSelection.cs" id="6_oxapm"]
 [ext_resource type="PackedScene" uid="uid://qu456accxluj" path="res://Scenes/Level/level_1.tscn" id="7_ypqxs"]
 [ext_resource type="PackedScene" uid="uid://dh74q41caysny" path="res://Scenes/Level/level_2.tscn" id="8_45k8s"]
-[ext_resource type="PackedScene" uid="uid://ddmmnxt58b5xa" path="res://Scenes/Level/level_3.tscn" id="9_82yli"]
-[ext_resource type="PackedScene" uid="uid://bprhkt2jsqhk2" path="res://Scenes/Level/level_4.tscn" id="10_sn0gx"]
-[ext_resource type="PackedScene" uid="uid://b7ounhljtoptk" path="res://Scenes/Level/level_5.tscn" id="11_f8w76"]
+[ext_resource type="PackedScene" path="res://Scenes/Level/level_3.tscn" id="9_82yli"]
+[ext_resource type="PackedScene" path="res://Scenes/Level/level_4.tscn" id="10_sn0gx"]
+[ext_resource type="PackedScene" path="res://Scenes/Level/level_5.tscn" id="11_f8w76"]
 
 [node name="DisplayManager" type="Control"]
 layout_mode = 3
@@ -52,7 +52,7 @@ offset_top = -11.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 40
 text = "Hardmode Studio"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -103,22 +103,19 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 28
 text = "Time to Hit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="StateMachine/SelectionScreen/SelectionScreen"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -193.0
-offset_top = -38.5
-offset_right = 193.0
-offset_bottom = 38.5
+offset_top = -11.0
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -126,7 +123,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.1
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 10
 text = "Level01"
 script = ExtResource("6_oxapm")
 levelGame = ExtResource("7_ypqxs")
@@ -136,7 +133,7 @@ _button = NodePath(".")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.1
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 10
 text = "Level02"
 script = ExtResource("6_oxapm")
 levelGame = ExtResource("8_45k8s")
@@ -146,7 +143,7 @@ _button = NodePath(".")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.1
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 10
 text = "Level03"
 script = ExtResource("6_oxapm")
 levelGame = ExtResource("9_82yli")
@@ -156,7 +153,7 @@ _button = NodePath(".")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.1
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 10
 text = "Level04"
 script = ExtResource("6_oxapm")
 levelGame = ExtResource("10_sn0gx")
@@ -166,7 +163,7 @@ _button = NodePath(".")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.1
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 10
 text = "Level05"
 script = ExtResource("6_oxapm")
 levelGame = ExtResource("11_f8w76")
