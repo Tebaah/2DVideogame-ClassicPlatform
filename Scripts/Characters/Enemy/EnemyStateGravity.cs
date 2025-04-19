@@ -15,9 +15,13 @@ public partial class EnemyStateGravity : EnemyStateBase
 
     public void ApplyGravity(double delta)
     {
-        if (!enemy.IsOnFloor())
-        {    
+        if (!enemy.IsOnFloor() && enemy.enemyType == "Ground")
+        {
             enemy.velocity.Y += (float)(gravity * delta);
+        }
+        else
+        {
+            enemy.velocity.Y = 0;
         }
     }
 

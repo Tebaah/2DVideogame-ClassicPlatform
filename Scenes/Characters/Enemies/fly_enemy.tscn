@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://ckiyxls22yj5t"]
+
+[ext_resource type="Script" uid="uid://comhd6m28i306" path="res://Scripts/Characters/Enemy/EnemyController.cs" id="1_evw0w"]
+[ext_resource type="Texture2D" uid="uid://tm2cctwnysbo" path="res://Assets/Characters/Enemy/tile_0026.png" id="2_evw0w"]
+[ext_resource type="Texture2D" uid="uid://ck1rhva17w75x" path="res://Assets/Characters/Enemy/tile_0024.png" id="3_tihcs"]
+[ext_resource type="Texture2D" uid="uid://bmk5r1uhyorqr" path="res://Assets/Characters/Enemy/tile_0025.png" id="4_tq3cn"]
+[ext_resource type="Script" uid="uid://b7pxybdlnlqt4" path="res://Scripts/Characters/HitBox.cs" id="5_a3ryt"]
+[ext_resource type="Script" uid="uid://mpryqscv4lcc" path="res://Scripts/StateMachine/StateMachine.cs" id="6_26twk"]
+[ext_resource type="Script" uid="uid://bdjyxe4b5p0bi" path="res://Scripts/Characters/Enemy/EnemyStateIdle.cs" id="7_cn2nw"]
+[ext_resource type="Script" uid="uid://c44cxwuwwid2q" path="res://Scripts/Characters/Enemy/EnemyStateWalking.cs" id="8_bn6a0"]
+[ext_resource type="Script" uid="uid://bf5cx81k1swqo" path="res://Scripts/Characters/Enemy/EnemyStateDead.cs" id="9_f1kkb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7fqo"]
+size = Vector2(21, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qbplk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_evw0w")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tihcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tq3cn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_evw0w")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ekg1"]
+size = Vector2(17, 3)
+
+[node name="FlyEnemy" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_evw0w")
+speed = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_c7fqo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_qbplk")
+animation = &"Walk"
+frame = 1
+frame_progress = 0.64787
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 32
+script = ExtResource("5_a3ryt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0.5, 5.5)
+shape = SubResource("RectangleShape2D_3ekg1")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("nodeToControl", "defaultState")]
+script = ExtResource("6_26twk")
+nodeToControl = NodePath("..")
+defaultState = NodePath("StateIdle")
+
+[node name="StateIdle" type="Node" parent="StateMachine"]
+script = ExtResource("7_cn2nw")
+
+[node name="StateWalk" type="Node" parent="StateMachine"]
+script = ExtResource("8_bn6a0")
+
+[node name="StateDead" type="Node" parent="StateMachine"]
+script = ExtResource("9_f1kkb")
+
+[connection signal="body_entered" from="HitBox" to="HitBox" method="OnHitBoxAreaEntered"]
