@@ -1,72 +1,42 @@
-[gd_scene load_steps=14 format=3 uid="uid://ckhhipmelthnb"]
+[gd_scene load_steps=13 format=3 uid="uid://d0bpklfcbw0h2"]
 
 [ext_resource type="Script" uid="uid://comhd6m28i306" path="res://Scripts/Characters/Enemy/EnemyController.cs" id="1_n0y8o"]
-[ext_resource type="Texture2D" uid="uid://d11pk0bc1vkav" path="res://Assets/Characters/Enemy/tilemap-characters_packed.png" id="2_psvj2"]
+[ext_resource type="Texture2D" uid="uid://di5arr7x1mepm" path="res://Assets/Characters/Enemy/tile_0020.png" id="2_eyo5v"]
+[ext_resource type="Texture2D" uid="uid://bow8mqon5qks5" path="res://Assets/Characters/Enemy/tile_0018.png" id="3_1tkeo"]
 [ext_resource type="Script" uid="uid://b7pxybdlnlqt4" path="res://Scripts/Characters/HitBox.cs" id="3_n0y8o"]
 [ext_resource type="Script" uid="uid://mpryqscv4lcc" path="res://Scripts/StateMachine/StateMachine.cs" id="4_1tkeo"]
+[ext_resource type="Texture2D" uid="uid://bkmuhkiq2bya1" path="res://Assets/Characters/Enemy/tile_0019.png" id="4_ol667"]
 [ext_resource type="Script" uid="uid://bdjyxe4b5p0bi" path="res://Scripts/Characters/Enemy/EnemyStateIdle.cs" id="5_ol667"]
 [ext_resource type="Script" uid="uid://c44cxwuwwid2q" path="res://Scripts/Characters/Enemy/EnemyStateWalking.cs" id="6_qbplk"]
 [ext_resource type="Script" uid="uid://bf5cx81k1swqo" path="res://Scripts/Characters/Enemy/EnemyStateDead.cs" id="7_et6ki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7fqo"]
-size = Vector2(16, 14)
+size = Vector2(15, 12)
 
-[sub_resource type="Animation" id="Animation_lij3b"]
-resource_name = "Dead"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [20]
-}
-
-[sub_resource type="Animation" id="Animation_ofthe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [18]
-}
-
-[sub_resource type="Animation" id="Animation_3ekg1"]
-resource_name = "Walk"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [18, 19]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_67xvd"]
-_data = {
-&"Dead": SubResource("Animation_lij3b"),
-&"RESET": SubResource("Animation_ofthe"),
-&"Walk": SubResource("Animation_3ekg1")
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_qbplk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eyo5v")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1tkeo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ol667")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ekg1"]
-size = Vector2(4, 8)
+size = Vector2(17, 13)
 
 [node name="SmallEnemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
@@ -75,20 +45,14 @@ script = ExtResource("1_n0y8o")
 speed = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0.5, 6)
 shape = SubResource("RectangleShape2D_c7fqo")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_psvj2")
-hframes = 9
-vframes = 3
-frame = 18
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_67xvd")
-}
+sprite_frames = SubResource("SpriteFrames_qbplk")
+animation = &"Dead"
+frame_progress = 0.927878
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
@@ -97,7 +61,7 @@ collision_layer = 32
 script = ExtResource("3_n0y8o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-8, 8)
+position = Vector2(0.5, 5.5)
 shape = SubResource("RectangleShape2D_3ekg1")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("nodeToControl", "defaultState")]
