@@ -25,27 +25,25 @@ public partial class EnemyStateWalking : EnemyStateGravity
 
         if(enemy.initialPosition > enemy.finalPosition)
         {
-            enemy.animations.Play("Walk");
+            enemy.sprite.Play("Walk");
             enemy.velocity.X -= (float)(enemy.speed * delta);
             if(enemy.Position.X <= enemy.finalPosition)
             {
                 enemy.velocity.X = 0;
                 enemy.initialPosition = enemy.finalPosition;
-                enemy.finalPosition = enemy.initialPosition + enemy.distance; // Change this value to the distance you want the enemy to walk
-                // stateMachine.ChangeTo(EnemyStatesNames.Idle);
+                enemy.finalPosition = enemy.initialPosition + enemy.distance; 
             }
         }
         else if(enemy.initialPosition < enemy.finalPosition)
         {
-            enemy.animations.Play("Walk");
-            // enemy.sprite.FlipH = false;
+            enemy.sprite.Play("Walk");
+            enemy.sprite.FlipH = false;
             enemy.velocity.X += (float)(enemy.speed * delta);
             if(enemy.Position.X >= enemy.finalPosition)
             {
                 enemy.velocity.X = 0;
                 enemy.initialPosition = enemy.finalPosition;
-                enemy.finalPosition = enemy.initialPosition - enemy.distance; // Change this value to the distance you want the enemy to walk
-                // stateMachine.ChangeTo(EnemyStatesNames.Idle);
+                enemy.finalPosition = enemy.initialPosition - enemy.distance;
             }
         }
         enemy.Velocity = enemy.velocity;
