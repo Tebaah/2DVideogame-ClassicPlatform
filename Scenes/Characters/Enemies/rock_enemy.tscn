@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1xbjbh2edkqs"]
+[gd_scene load_steps=12 format=3 uid="uid://bcudh1x6quafk"]
 
 [ext_resource type="Script" uid="uid://comhd6m28i306" path="res://Scripts/Characters/Enemy/EnemyController.cs" id="1_bs26i"]
 [ext_resource type="Texture2D" uid="uid://qc1ws7kifp20" path="res://Assets/Characters/Enemy/tile_0011.png" id="2_muuph"]
@@ -28,7 +28,7 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ekg1"]
 
-[node name="SpikesEnemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="RockEnemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_bs26i")
