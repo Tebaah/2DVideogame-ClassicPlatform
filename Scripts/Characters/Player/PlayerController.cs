@@ -36,6 +36,15 @@ public partial class PlayerController : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        AnimationDirection();
+    }
+
+
+    #endregion
+
+    #region Methods
+    private void AnimationDirection()
+    {
         if (velocity.X < 0)
         {
             _sprite.FlipH = false;
@@ -46,9 +55,5 @@ public partial class PlayerController : CharacterBody2D
         }
     }
 
-    #endregion
-
-    #region Methods
-    
     #endregion
 }
