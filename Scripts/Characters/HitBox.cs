@@ -24,6 +24,23 @@ public partial class HitBox : Area2D
         if (body.IsInGroup("Enemy"))
         {
             GD.Print("Hitbox collided with enemy!"); // TODO: implement damage system
+            var player = GetParent().GetNodeOrNull<PlayerController>("Player");
+            if (player == null)
+            {
+                GD.PrintErr("Player not found in HitBox");
+            }
+            else
+            {
+                var stateMachine = player.GetNodeOrNull<StateMachine>("StateMachine");
+                if (stateMachine == null)
+                {
+                    GD.PrintErr("StateMachine not found in Player");
+                }
+                else
+                {
+                    stateMachine.ChangeTo(PlayerStatusName.jump);
+                }
+            }
             body.QueueFree();
         }
     }
