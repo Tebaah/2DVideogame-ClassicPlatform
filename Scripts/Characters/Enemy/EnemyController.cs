@@ -13,17 +13,24 @@ public partial class EnemyController : CharacterBody2D
     public Vector2 velocity;
     public AnimatedSprite2D sprite;
 
+    private Random random = new Random(); // Moved to a class-level variable to avoid creating multiple instances
     #endregion
 
     #region Godot Methods
 
     public override void _Ready()
     {
-        Random random = new Random();
-        distance = random.Next(100, 200);
+        distance = random.Next(100, 200); // Reuse the class-level Random instance
 
         initialPosition = Position.X;
         finalPosition = initialPosition - distance;
+
+        sprite = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
+
+        if (sprite == null)
+        {
+            GD.PrintErr("AnimatedSprite2D node not found. Ensure the node exists in the scene.");
+        }
     }
 
     #endregion

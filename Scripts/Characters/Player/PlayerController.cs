@@ -28,7 +28,7 @@ public partial class PlayerController : CharacterBody2D
         _camera = GetNode<Camera2D>("Camera2D");
 
         // Initialize the level manager
-        _levelManager = GetParent().GetNode<LevelManager>("../Level1");
+        _levelManager = GetParent().GetNode<LevelManager>("../LevelManager");
 
         _camera.LimitLeft = _levelManager.LimitLeft;
         _camera.LimitRight = _levelManager.LimitRight;

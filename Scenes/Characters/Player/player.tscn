@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://bg2o3s6fuf1a7"]
+[gd_scene load_steps=20 format=3 uid="uid://bg2o3s6fuf1a7"]
 
 [ext_resource type="Script" uid="uid://d0gwi1vx0hp2b" path="res://Scripts/Characters/Player/PlayerController.cs" id="1_na1gh"]
 [ext_resource type="Texture2D" uid="uid://beif725dssw54" path="res://Assets/Characters/Player/tilemap-characters_packed.png" id="2_dxcao"]
 [ext_resource type="Script" uid="uid://mpryqscv4lcc" path="res://Scripts/StateMachine/StateMachine.cs" id="2_fiy7r"]
+[ext_resource type="Script" uid="uid://b7pxybdlnlqt4" path="res://Scripts/Characters/HitBox.cs" id="3_8gg06"]
 [ext_resource type="AudioStream" uid="uid://bxyv64ucn6wf0" path="res://Assets/Characters/Player/Sounds/jump.wav" id="4_8gg06"]
 [ext_resource type="Script" uid="uid://cosraa211g6mt" path="res://Scripts/Characters/Player/PlayerStatusIdle.cs" id="4_pgkq4"]
 [ext_resource type="Script" uid="uid://bunghcrgrjyxf" path="res://Scripts/Characters/Player/PlayerStatusWalking.cs" id="5_gyoss"]
@@ -13,7 +14,7 @@
 size = Vector2(14, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxcao"]
-size = Vector2(14, 3)
+size = Vector2(12, 3.5)
 
 [sub_resource type="Animation" id="Animation_dxcao"]
 resource_name = "Fall"
@@ -168,11 +169,12 @@ hframes = 9
 vframes = 3
 
 [node name="HitBox" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 32
 collision_mask = 2
+script = ExtResource("3_8gg06")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, 12)
+position = Vector2(0, 12.25)
 shape = SubResource("RectangleShape2D_dxcao")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
