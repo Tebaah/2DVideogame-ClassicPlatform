@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dn1jo4dxfhnqa"]
+[gd_scene load_steps=13 format=3 uid="uid://bkjbho002q2mf"]
 
 [ext_resource type="Script" uid="uid://comhd6m28i306" path="res://Scripts/Characters/Enemy/EnemyController.cs" id="1_e0n86"]
 [ext_resource type="Texture2D" uid="uid://cp58xlalx61nr" path="res://Assets/Characters/Enemy/tile_0017.png" id="2_e0n86"]
