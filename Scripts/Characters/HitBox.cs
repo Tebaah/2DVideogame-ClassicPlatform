@@ -5,9 +5,16 @@ public partial class HitBox : Area2D
 {
     #region Variables
 
+    private Node _levelNode;
+
     #endregion
 
     #region Godot Methods
+
+    public override void _Ready()
+    {
+        _levelNode = GetTree().CurrentScene;
+    }
 
     #endregion
 
@@ -15,16 +22,18 @@ public partial class HitBox : Area2D
 
     public void OnHitBoxAreaEntered(Node2D body)
     {
+        var levelManager = _levelNode.GetNodeOrNull<LevelManager>("LevelManager");
+
         if (body.IsInGroup("Player"))
         {
-            GetTree().Root.GetNode<LevelManager>("Level1").Discountscore(5);
+            levelManager.Discountscore(5);
             GD.Print("HitBox: Player hit!");
         }
 
         if (body.IsInGroup("Enemy"))
         {
             GD.Print("Hitbox collided with enemy!"); // TODO: implement damage system
-            body.QueueFree();
+            // body.GetNode<EnemyStateDead>("StateDead").OnDead();
         }
     }
     #endregion
