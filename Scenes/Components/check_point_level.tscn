@@ -29,6 +29,7 @@ script = ExtResource("1_2l6k2")
 shape = SubResource("RectangleShape2D_ebeu5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_02auo")
 frame_progress = 0.355636
 
