@@ -8,6 +8,7 @@ public partial class CheckPointLevel : Area2D
     private GameManager _gameManager;
     private LevelManager _levelManager;
     private AnimatedSprite2D _animatedSprite;
+    private Node _levelNode;
 
     #endregion
 
@@ -18,6 +19,9 @@ public partial class CheckPointLevel : Area2D
         InitializeGameManager();
         InitializeLevelManager();
         InitializeAnimatedSprite();
+
+  
+
     }
 
     #endregion
@@ -35,11 +39,12 @@ public partial class CheckPointLevel : Area2D
 
     private void InitializeLevelManager()
     {
-        string levelManagerPath = $"/root/{GetParent().Name}";
-        _levelManager = GetNodeOrNull<LevelManager>(levelManagerPath);
+        _levelNode = GetTree().CurrentScene;
+        
+        _levelManager = _levelNode.GetNodeOrNull<LevelManager>("LevelManager");
         if (_levelManager == null)
         {
-            GD.PrintErr($"LevelManager not found at path: {levelManagerPath}");
+            GD.PrintErr($"LevelManager not found at path: {_levelManager.GetPath()}");
         }
     }
 
