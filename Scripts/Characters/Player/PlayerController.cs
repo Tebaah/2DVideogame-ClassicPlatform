@@ -15,6 +15,8 @@ public partial class PlayerController : CharacterBody2D
 
     private LevelManager _levelManager;
 
+    public bool jumpByEnemy = false;
+
     #endregion
 
     #region Godot Methods

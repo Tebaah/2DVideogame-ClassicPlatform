@@ -31,6 +31,7 @@ public partial class HitBox : Area2D
             }
             else
             {
+                player.jumpByEnemy = true;
                 var stateMachine = player.GetNodeOrNull<StateMachine>("StateMachine");
                 if (stateMachine == null)
                 {
