@@ -33,9 +33,6 @@ public partial class HitBox : Area2D
         if (body.IsInGroup("Enemy"))
         {
             GD.Print("Hitbox collided with enemy!"); // TODO: implement damage system
-<<<<<<< HEAD
-            // body.GetNode<EnemyStateDead>("StateDead").OnDead();
-=======
             var player = GetParent().GetNodeOrNull<PlayerController>("Player");
             if (player == null)
             {
@@ -43,6 +40,7 @@ public partial class HitBox : Area2D
             }
             else
             {
+                player.jumpByEnemy = true;
                 var stateMachine = player.GetNodeOrNull<StateMachine>("StateMachine");
                 if (stateMachine == null)
                 {
@@ -54,7 +52,6 @@ public partial class HitBox : Area2D
                 }
             }
             body.QueueFree();
->>>>>>> feature/player
         }
     }
     #endregion

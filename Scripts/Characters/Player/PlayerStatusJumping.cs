@@ -51,10 +51,11 @@ public partial class PlayerStatusJumping : PlayerStatusGravity
 
     private void ImpulseForTheJump(double delta)
     {
-        if (player.IsOnFloor() && player.velocity.Y > 0)
+        if ((player.IsOnFloor() && player.velocity.Y > 0) || player.jumpByEnemy)
         {
             player.velocity.Y = (float)(-player.jumpForce * delta);
             player.audio.Play();
+            player.jumpByEnemy = false; // Resetea la variable
         }
     }
 
