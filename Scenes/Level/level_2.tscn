@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bak3ogupl2fox"]
+[gd_scene load_steps=20 format=4 uid="uid://lng7cukvar1a"]
 
 [ext_resource type="Script" uid="uid://c4kskla0t181y" path="res://Scripts/GameManager/LevelManager.cs" id="1_nraam"]
 [ext_resource type="Texture2D" uid="uid://brwt4jknnh357" path="res://Assets/Levels/tilemap-backgrounds.png" id="2_n0bsh"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c5j0i7er4it0r" path="res://Scenes/Components/check_point_level.tscn" id="6_71ffg"]
 [ext_resource type="PackedScene" uid="uid://c5nx3k8xs8b2b" path="res://Scenes/Characters/Enemies/big_enemy.tscn" id="6_n0bsh"]
 [ext_resource type="PackedScene" uid="uid://bg2o3s6fuf1a7" path="res://Scenes/Characters/Player/player.tscn" id="7_8b42i"]
-[ext_resource type="PackedScene" path="res://Scenes/Characters/Enemies/fly_enemy.tscn" id="7_y45lv"]
+[ext_resource type="PackedScene" uid="uid://ckiyxls22yj5t" path="res://Scenes/Characters/Enemies/fly_enemy.tscn" id="7_y45lv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pvlc2"]
 texture = ExtResource("2_n0bsh")
@@ -350,7 +350,7 @@ metadata/_edit_vertical_guides_ = [2560.0, 3840.0, 1080.0]
 
 [node name="LevelManager" type="Node2D" parent="."]
 script = ExtResource("1_nraam")
-pointsToWin = 40
+pointsToWin = 30
 timeToWin = 15
 LimitRight = 1080
 
@@ -366,7 +366,7 @@ tile_set = SubResource("TileSet_1d5ck")
 
 [node name="Objects" type="TileMapLayer" parent="LevelManager"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAZAAgAAQAGAAAAAAA=")
+tile_map_data = PackedByteArray("AAAaAAgAAQAGAAEAAAA=")
 tile_set = SubResource("TileSet_4eusg")
 
 [node name="Environment" type="TileMapLayer" parent="LevelManager"]
@@ -439,9 +439,22 @@ speed = 75.0
 position = Vector2(675, 95)
 speed = 75.0
 
+[node name="BigEnemy3" parent="LevelManager/Enemies" instance=ExtResource("6_n0bsh")]
+position = Vector2(853, 114)
+speed = 75.0
+
 [node name="FlyEnemy" parent="LevelManager/Enemies" instance=ExtResource("7_y45lv")]
 position = Vector2(272, 117)
 speed = 50.0
+enemyType = "Flying"
+
+[node name="FlyEnemy2" parent="LevelManager/Enemies" instance=ExtResource("7_y45lv")]
+position = Vector2(178, 80)
+speed = 50.0
+enemyType = "Flying"
+
+[node name="FlyEnemy3" parent="LevelManager/Enemies" instance=ExtResource("7_y45lv")]
+position = Vector2(485, 92)
 enemyType = "Flying"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LevelManager"]
