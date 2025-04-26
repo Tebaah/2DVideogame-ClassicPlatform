@@ -26,43 +26,11 @@ public partial class HitBox : Area2D
 
         if (body.IsInGroup("Player"))
         {
-<<<<<<< HEAD
-            levelManager.Discountscore(5);
-=======
-<<<<<<< Updated upstream
-            GetTree().Root.GetNode<LevelManager>("Level1").Discountscore(5);
->>>>>>> feature/enemy
-            GD.Print("HitBox: Player hit!");
-=======
             HandlePlayerHit(levelManager);
->>>>>>> Stashed changes
         }
         else if (body.IsInGroup("Enemy"))
         {
-<<<<<<< Updated upstream
-            GD.Print("Hitbox collided with enemy!"); // TODO: implement damage system
-            var player = GetParent().GetNodeOrNull<PlayerController>("Player");
-            if (player == null)
-            {
-                GD.PrintErr("Player not found in HitBox");
-            }
-            else
-            {
-                player.jumpByEnemy = true;
-                var stateMachine = player.GetNodeOrNull<StateMachine>("StateMachine");
-                if (stateMachine == null)
-                {
-                    GD.PrintErr("StateMachine not found in Player");
-                }
-                else
-                {
-                    stateMachine.ChangeTo(PlayerStatusName.jump);
-                }
-            }
-            body.QueueFree();
-=======
             HandleEnemyHit(body);
->>>>>>> Stashed changes
         }
     }
 
