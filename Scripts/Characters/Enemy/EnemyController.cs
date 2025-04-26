@@ -20,22 +20,25 @@ public partial class EnemyController : CharacterBody2D
 
     public override void _Ready()
     {
-        distance = random.Next(100, 200); // Reuse the class-level Random instance
+        Random random = new Random();
+        distance = random.Next(100, 200);
 
         initialPosition = Position.X;
         finalPosition = initialPosition - distance;
-
-        sprite = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
-
-        if (sprite == null)
-        {
-            GD.PrintErr("AnimatedSprite2D node not found. Ensure the node exists in the scene.");
-        }
     }
 
     #endregion
 
-    #region Methods
+    #region Custom Methods
     
+    #endregion
+
+    #region Signal Handlers
+
+    private void RequestQueueFree()
+    {
+        QueueFree();
+    }
+
     #endregion
 }
