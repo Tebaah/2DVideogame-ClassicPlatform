@@ -5,20 +5,25 @@ using System.Threading.Tasks;
 public partial class EnemyStateDead : EnemyStateGravity
 {
     #region Variables
+    [Signal] public delegate void RequestQueueFreeEventHandler();
 
     #endregion
 
     #region Godot Methods
 
+    public override void AtStartState()
+    {
+        base.AtStartState();
+        OnDead();
+    }
+
     #endregion  
 
     #region Custom Methods
 
-    public async void OnDead()
+    public void OnDead()
     {
-        GD.Print("Enemy is dead");
-        await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
-        QueueFree();
+        EmitSignal(nameof(RequestQueueFree));
     }
     #endregion
 }
