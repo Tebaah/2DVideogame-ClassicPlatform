@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://lng7cukvar1a"]
+[gd_scene load_steps=21 format=4 uid="uid://lng7cukvar1a"]
 
 [ext_resource type="Script" uid="uid://c4kskla0t181y" path="res://Scripts/GameManager/LevelManager.cs" id="1_nraam"]
 [ext_resource type="Texture2D" uid="uid://brwt4jknnh357" path="res://Assets/Levels/tilemap-backgrounds.png" id="2_n0bsh"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c5nx3k8xs8b2b" path="res://Scenes/Characters/Enemies/big_enemy.tscn" id="6_n0bsh"]
 [ext_resource type="PackedScene" uid="uid://bg2o3s6fuf1a7" path="res://Scenes/Characters/Player/player.tscn" id="7_8b42i"]
 [ext_resource type="PackedScene" uid="uid://ckiyxls22yj5t" path="res://Scenes/Characters/Enemies/fly_enemy.tscn" id="7_y45lv"]
+[ext_resource type="AudioStream" uid="uid://cteaj4lpsq8ky" path="res://Assets/Music/N E S Y X.wav" id="8_lnnfv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pvlc2"]
 texture = ExtResource("2_n0bsh")
@@ -350,8 +351,8 @@ metadata/_edit_vertical_guides_ = [2560.0, 3840.0, 1080.0]
 
 [node name="LevelManager" type="Node2D" parent="."]
 script = ExtResource("1_nraam")
-pointsToWin = 30
-timeToWin = 15
+pointsToWin = 25
+timeToWin = 20
 LimitRight = 1080
 
 [node name="Sky" type="TileMapLayer" parent="LevelManager"]
@@ -458,6 +459,9 @@ position = Vector2(485, 92)
 enemyType = "Flying"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LevelManager"]
+stream = ExtResource("8_lnnfv")
+autoplay = true
+bus = &"Music"
 
 [node name="CheckPointLevel" parent="LevelManager" instance=ExtResource("6_71ffg")]
 texture_filter = 1
