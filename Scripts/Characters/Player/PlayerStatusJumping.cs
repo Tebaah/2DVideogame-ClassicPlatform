@@ -11,19 +11,16 @@ public partial class PlayerStatusJumping : PlayerStatusGravity
 
     public override void OnPhysicsProcess(double delta)
     {
-
-        // JumpingAnimationDirection(); TODO: review correct implementation
-        player.animations.Play("Jump");
-        // player.audio.Play();
+        base.OnPhysicsProcess(delta);
+        
+        player.Animations.Play("Jump");
 
         ImpulseForTheJump(delta);
 
-        player.velocity.X = (float)(Input.GetAxis("Left", "Right") * player.speed * delta);
+        player.SetVelocityX((float)(Input.GetAxis("Left", "Right") * player.Speed * delta));
 
-
-        ApplyGravity(delta);
+        // ApplyGravity(delta);
         
-        player.Velocity = player.velocity;
         player.MoveAndSlide();
   
         ChangeToFalling();
@@ -33,35 +30,20 @@ public partial class PlayerStatusJumping : PlayerStatusGravity
 
     #region Custom Methods
 
-    private void JumpingAnimationDirection()
-    {
-        if (player.velocity.X < 0)
-        {
-            player.animations.Play("JumpLeft");
-        }
-        else if (player.velocity.X > 0)
-        {
-            player.animations.Play("JumpRight");
-        }
-        else if (player.velocity.X == 0)
-        {
-            player.animations.Play("Jump");
-        }
-    }
-
     private void ImpulseForTheJump(double delta)
     {
-        if ((player.IsOnFloor() && player.velocity.Y > 0) || player.jumpByEnemy)
+        if (player.IsOnFloor() || player.JumpByEnemy)
         {
-            player.velocity.Y = (float)(-player.jumpForce * delta);
-            player.audio.Play();
-            player.jumpByEnemy = false; // Resetea la variable
+            player.setVelocityY((float)(-player.JumpForce * delta));
+            
+            player.Audio.Play();
+            player.JumpByEnemy = false; // Resetea la variable
         }
     }
 
     private void ChangeToFalling()
     {
-        if (player.velocity.Y > 0)
+        if (player.Velocity.Y > 0)
         {
             stateMachine.ChangeTo(PlayerStatusName.fall);
         }

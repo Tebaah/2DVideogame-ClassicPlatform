@@ -11,8 +11,9 @@ public partial class PlayerStatusFalling : PlayerStatusGravity
 
     public override void OnPhysicsProcess(double delta)
     {
-        
-        if (player.velocity.Y >= 0 && player.IsOnFloor())
+        base.OnPhysicsProcess(delta);
+
+        if (player.Velocity.Y >= 0 && player.IsOnFloor())
         {
             if (Input.IsActionPressed("Left") || Input.IsActionPressed("Right"))
             {
@@ -24,11 +25,9 @@ public partial class PlayerStatusFalling : PlayerStatusGravity
             }
         }
 
-        player.velocity.X = (float)(Input.GetAxis("Left", "Right") * player.speed * delta);
+        player.SetVelocityX((float)(Input.GetAxis("Left", "Right") * player.Speed * delta));
 
-        ApplyGravity(delta);
-        player.animations.Play("Fall");
-        player.Velocity = player.velocity;
+        player.Animations.Play("Fall");
         player.MoveAndSlide();
     }
 

@@ -11,12 +11,13 @@ public partial class PlayerStatusIdle : PlayerStatusGravity
 
     public override void OnPhysicsProcess(double delta)
     {
-        player.velocity.X = 0;
-        ApplyGravity(delta);
-        player.Velocity = player.velocity;
+        base.OnPhysicsProcess(delta);
+                
+        player.SetVelocityX(0);
+
         player.MoveAndSlide();
 
-        player.animations.Play("Idle");
+        player.Animations.Play("Idle");
     }
     public override void OnInput(InputEvent @event)
     {

@@ -54,7 +54,11 @@ public partial class HitBox : Area2D
             GD.PrintErr("Player not found in HitBox");
             return;
         }
+<<<<<<< HEAD
         player.jumpByEnemy = true;
+=======
+        player.JumpByEnemy = true;
+>>>>>>> feature/player
         var stateMachine = player.GetNodeOrNull<StateMachine>("StateMachine");
         if (stateMachine == null)
         {
