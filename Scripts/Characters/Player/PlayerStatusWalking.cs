@@ -11,12 +11,14 @@ public partial class PlayerStatusWalking : PlayerStatusGravity
 
     public override void OnPhysicsProcess(double delta)
     {
-        player.velocity.X = (float)(Input.GetAxis("Left", "Right") * player.speed * delta);
-        ApplyGravity(delta);
-        player.Velocity = player.velocity;
+        base.OnPhysicsProcess(delta);
+        
+
+        player.SetVelocityX((float)(Input.GetAxis("Left", "Right") * player.Speed * delta));
+
         player.MoveAndSlide();
 
-        player.animations.Play("Walk");
+        player.Animations.Play("Walk");
     }
 
     public override void OnInput(InputEvent @event)
