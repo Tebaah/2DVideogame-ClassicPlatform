@@ -4,16 +4,16 @@ using System;
 public partial class EnemyController : CharacterBody2D
 {
     #region Variables
-    [Export] public double speed;
-    [Export] public double jumpForce;
-    [Export(PropertyHint.Enum, "Flying,Ground")] public string enemyType = "Ground";
-    public float initialPosition;
-    public float finalPosition;
-    public float distance;
-    public Vector2 velocity;
-    public AnimatedSprite2D sprite;
+    [Export] public double Speed { get; set; }
+    [Export] public double JumpForce { get; set; }
+    [Export(PropertyHint.Enum, "Flying,Ground")] public string EnemyType { get; set; } = "Ground";
+    public float InitialPosition { get; private set; }
+    public float FinalPosition { get; private set; }
+    public float Distance { get; private set; }
+    // public Vector2 Velocity { get; set; } // Removed as it was not used
+    public AnimatedSprite2D Sprite { get; private set; }
 
-    private Random random = new Random(); // Moved to a class-level variable to avoid creating multiple instances
+    private Random Random { get; } = new Random(); // Converted to a read-only property
     #endregion
 
     #region Godot Methods
@@ -31,15 +31,15 @@ public partial class EnemyController : CharacterBody2D
 
     private void InitializeMovementBounds()
     {
-        distance = random.Next(100, 200);
-        initialPosition = Position.X;
-        finalPosition = initialPosition - distance;
+        Distance = Random.Next(100, 200);
+        InitialPosition = Position.X;
+        FinalPosition = InitialPosition - Distance;
     }
 
     private void InitializeSprite()
     {
-        sprite = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
-        if (sprite == null)
+        Sprite = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
+        if (Sprite == null)
         {
             GD.PrintErr("AnimatedSprite2D node not found. Ensure the node exists in the scene.");
         }
@@ -69,6 +69,13 @@ public partial class EnemyController : CharacterBody2D
     #endregion
 
     #region Custom Methods
+
+    public void SetVelocity(float y)
+    {
+        var velocity = Velocity;
+        velocity.Y = y;
+        Velocity = velocity;
+    }
     
     #endregion
 
