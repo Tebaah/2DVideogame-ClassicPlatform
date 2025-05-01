@@ -8,6 +8,7 @@ public partial class Coin : Area2D
 
     private AudioStreamPlayer2D _audio;
     [Export] private int _pointCoin;
+    private Node _levelNode;
     #endregion
 
     #region Godot Methods
@@ -15,6 +16,7 @@ public partial class Coin : Area2D
     public override void _Ready()
     {
         _audio = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
+        _levelNode = GetTree().CurrentScene;
     }
 
     #endregion
@@ -25,9 +27,17 @@ public partial class Coin : Area2D
     {
         if (body.IsInGroup("Player"))
         {
-            GetTree().Root.GetNode<LevelManager>("Level1").AddScore(_pointCoin);
-            GD.Print("Coin collected!"); // TODO incorporate into score system and audio
-            QueueFree();
+            var levelManager = _levelNode.GetNodeOrNull<LevelManager>("LevelManager");
+            if (levelManager != null)
+            {
+                levelManager.AddScore(_pointCoin);
+                GD.Print("Coin collected!");
+                QueueFree();
+            }
+            else
+            {
+                GD.PrintErr("LevelManager node not found. Cannot add score.");
+            }
         }
     }
 

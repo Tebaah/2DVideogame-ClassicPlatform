@@ -9,6 +9,11 @@ public partial class PlayerStatusGravity : PlayerStatusBase
 
     #region Godot Methods
 
+    public override void OnPhysicsProcess(double delta)
+    {
+        ApplyGravity(delta);
+    }
+
     #endregion
 
     #region Methods
@@ -17,7 +22,7 @@ public partial class PlayerStatusGravity : PlayerStatusBase
     {
         if (!player.IsOnFloor())
         {    
-            player.velocity.Y += (float)(gravity * delta);
+            player.AddVelocityY((float)(gravity * delta));
         }
     }
 

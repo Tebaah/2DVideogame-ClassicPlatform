@@ -51,7 +51,7 @@ public partial class LevelManager : Node2D
 
     public async void StartTimer()
     {
-        await ToSignal(GetTree().CreateTimer(2.0f), "timeout");
+        await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
         timer.Start();
     }
 
