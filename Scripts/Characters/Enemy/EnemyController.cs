@@ -4,16 +4,16 @@ using System;
 public partial class EnemyController : CharacterBody2D
 {
     #region Variables
-    [Export] public double speed;
-    [Export] public double jumpForce;
-    [Export(PropertyHint.Enum, "Flying,Ground")] public string enemyType = "Ground";
-    public float initialPosition;
-    public float finalPosition;
-    public float distance;
-    public Vector2 velocity;
-    public AnimatedSprite2D sprite;
+    [Export] public double Speed { get; set; }
+    [Export] public double JumpForce { get; set; }
+    [Export] public int Point { get; set; }
+    [Export] public float Distance { get; private set; }
+    [Export(PropertyHint.Enum, "Flying,Ground")] public string EnemyType { get; set; } = "Ground";
+    public float InitialPosition { get; set; }
+    public float FinalPosition { get; set; }
+    public AnimatedSprite2D Sprite { get; private set; }
 
-    private Random random = new Random(); // Moved to a class-level variable to avoid creating multiple instances
+    private Random Random { get; } = new Random(); // Converted to a read-only property
     #endregion
 
     #region Godot Methods
@@ -23,6 +23,7 @@ public partial class EnemyController : CharacterBody2D
         InitializeMovementBounds();
         InitializeSprite();
         ConnectDeadStateSignal();
+
     }
 
     #endregion
@@ -31,20 +32,22 @@ public partial class EnemyController : CharacterBody2D
 
     private void InitializeMovementBounds()
     {
-        distance = random.Next(100, 200);
-        initialPosition = Position.X;
-        finalPosition = initialPosition - distance;
+        if (Distance == 0)
+        {
+            Distance = Random.Next(50, 100); // Random distance between 50 and 100
+        }
+        InitialPosition = Position.X;
+        FinalPosition = InitialPosition - Distance;
     }
 
     private void InitializeSprite()
     {
-        sprite = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
-        if (sprite == null)
+        Sprite = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
+        if (Sprite == null)
         {
             GD.PrintErr("AnimatedSprite2D node not found. Ensure the node exists in the scene.");
         }
     }
-
     private void ConnectDeadStateSignal()
     {
         var stateMachine = GetNodeOrNull<Node>("StateMachine");
@@ -69,7 +72,41 @@ public partial class EnemyController : CharacterBody2D
     #endregion
 
     #region Custom Methods
-    
+
+    public void AddVelocityY(float y)
+    {
+        var velocity = Velocity;
+        velocity.Y += y;
+        Velocity = velocity;
+    }
+
+    public void SetVelocityY(float y)
+    {
+        var velocity = Velocity;
+        velocity.Y = y;
+        Velocity = velocity;
+    }
+
+    public void AddVelocityX(float x)
+    {
+        var velocity = Velocity;
+        velocity.X += x;
+        Velocity = velocity;
+    }
+
+    public void RemoveVelocityX(float x)
+    {
+        var velocity = Velocity;
+        velocity.X -= x;
+        Velocity = velocity;
+    }
+    public void SetVelocityX(float x)
+    {
+        var velocity = Velocity;
+        velocity.X = x;
+        Velocity = velocity;
+    }
+
     #endregion
 
     #region Signal Handlers

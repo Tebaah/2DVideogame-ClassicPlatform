@@ -6,7 +6,7 @@ public partial class EnemyStateBase : StateBase
     #region Variables
 
     public EnemyController enemy;
-    public double gravity;
+    public double Gravity { get; set; }
 
     #endregion
 
@@ -28,7 +28,7 @@ public partial class EnemyStateBase : StateBase
             return;
         }
 
-        gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+        Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
     }
 
     public override void AtEndState()

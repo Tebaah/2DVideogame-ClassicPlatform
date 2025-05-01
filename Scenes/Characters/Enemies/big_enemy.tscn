@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5nx3k8xs8b2b"]
+[gd_scene load_steps=13 format=3 uid="uid://chpjfpp3trs2y"]
 
 [ext_resource type="Script" uid="uid://comhd6m28i306" path="res://Scripts/Characters/Enemy/EnemyController.cs" id="1_jgplq"]
 [ext_resource type="Texture2D" uid="uid://c7qgcy3rt64e3" path="res://Assets/Characters/Enemy/tile_0023.png" id="2_jgplq"]
@@ -42,9 +42,9 @@ size = Vector2(5, 17)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_jgplq")
-speed = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_c7fqo")
 

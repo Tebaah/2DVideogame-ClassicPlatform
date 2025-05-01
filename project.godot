@@ -55,3 +55,4 @@ Jump={
 2d_physics/layer_4="Checkpoint"
 2d_physics/layer_5="Coin"
 2d_physics/layer_6="HitBox"
+2d_physics/layer_7="Hit"

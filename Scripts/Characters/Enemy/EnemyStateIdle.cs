@@ -8,18 +8,21 @@ public partial class EnemyStateIdle : EnemyStateGravity
 
     #endregion
 
-    #region Godot Methods   
+    #region Godot Methods
+
+    public override void AtStartState()
+    {
+        base.AtStartState();
+        TimerToChange();
+    }
 
     public override void OnPhysicsProcess(double delta)
     {
-        enemy.velocity.X = 0;
-        ApplyGravity(delta);
-        enemy.Velocity = enemy.velocity;
+        base.OnPhysicsProcess(delta);
+
+        enemy.SetVelocityX(0);
+
         enemy.MoveAndSlide();
-
-
-        TimerToChange();
-        // enemy.animations.Play("Idle"); TODO: create idle animation
     }
 
     #endregion  
@@ -28,7 +31,7 @@ public partial class EnemyStateIdle : EnemyStateGravity
 
     private async void TimerToChange()
     {
-        await ToSignal(GetTree().CreateTimer(2), "timeout");
+        await ToSignal(GetTree().CreateTimer(0.5), "timeout");
         stateMachine.ChangeTo("StateWalk");
     }
 
