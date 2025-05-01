@@ -78,9 +78,13 @@ public partial class HitBox : Area2D
             GD.PrintErr("StateMachine not found in Enemy");
             return;
         }
-        stateMachine.ChangeTo("StateDead");
-    }
 
+        var levelManager = _levelNode.GetNodeOrNull<LevelManager>("LevelManager");
+        levelManager?.AddScore(enemy.Point);
+
+        stateMachine.ChangeTo("StateDead");
+
+    }
     #endregion
 
 }

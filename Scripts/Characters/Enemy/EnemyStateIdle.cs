@@ -8,7 +8,13 @@ public partial class EnemyStateIdle : EnemyStateGravity
 
     #endregion
 
-    #region Godot Methods   
+    #region Godot Methods
+
+    public override void AtStartState()
+    {
+        base.AtStartState();
+        TimerToChange();
+    }
 
     public override void OnPhysicsProcess(double delta)
     {
@@ -17,8 +23,6 @@ public partial class EnemyStateIdle : EnemyStateGravity
         enemy.SetVelocityX(0);
 
         enemy.MoveAndSlide();
-
-        TimerToChange();
     }
 
     #endregion  

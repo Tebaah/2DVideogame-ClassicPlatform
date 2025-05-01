@@ -6,10 +6,11 @@ public partial class EnemyController : CharacterBody2D
     #region Variables
     [Export] public double Speed { get; set; }
     [Export] public double JumpForce { get; set; }
+    [Export] public int Point { get; set; }
+    [Export] public float Distance { get; private set; }
     [Export(PropertyHint.Enum, "Flying,Ground")] public string EnemyType { get; set; } = "Ground";
     public float InitialPosition { get; set; }
     public float FinalPosition { get; set; }
-    public float Distance { get; set; }
     public AnimatedSprite2D Sprite { get; private set; }
 
     private Random Random { get; } = new Random(); // Converted to a read-only property
@@ -31,7 +32,10 @@ public partial class EnemyController : CharacterBody2D
 
     private void InitializeMovementBounds()
     {
-        Distance = Random.Next(50, 100);
+        if (Distance == 0)
+        {
+            Distance = Random.Next(50, 100); // Random distance between 50 and 100
+        }
         InitialPosition = Position.X;
         FinalPosition = InitialPosition - Distance;
     }
@@ -44,7 +48,6 @@ public partial class EnemyController : CharacterBody2D
             GD.PrintErr("AnimatedSprite2D node not found. Ensure the node exists in the scene.");
         }
     }
-
     private void ConnectDeadStateSignal()
     {
         var stateMachine = GetNodeOrNull<Node>("StateMachine");
@@ -103,7 +106,7 @@ public partial class EnemyController : CharacterBody2D
         velocity.X = x;
         Velocity = velocity;
     }
-    
+
     #endregion
 
     #region Signal Handlers
