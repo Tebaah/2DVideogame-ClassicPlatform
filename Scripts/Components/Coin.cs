@@ -6,8 +6,8 @@ public partial class Coin : Area2D
 {
     #region Variables
 
+    [Export] public float ScoreMultiplier { get; set; }
     private AudioStreamPlayer2D _audio;
-    [Export] private int _pointCoin;
     private Node _levelNode;
     #endregion
 
