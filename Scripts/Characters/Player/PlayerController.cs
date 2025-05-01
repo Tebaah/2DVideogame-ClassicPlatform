@@ -14,11 +14,7 @@ public partial class PlayerController : CharacterBody2D
 
     private LevelManager _levelManager;
 
-<<<<<<< HEAD
-    public bool jumpByEnemy = false;
-=======
     public bool JumpByEnemy { get; set; } = false;
->>>>>>> feature/player
 
     #endregion
 
@@ -67,7 +63,7 @@ public partial class PlayerController : CharacterBody2D
         Velocity = velocity;
     }
 
-    public void setVelocityY(float y)
+    public void SetVelocityY(float y)
     {
         var velocity = Velocity;
         velocity.Y = y;

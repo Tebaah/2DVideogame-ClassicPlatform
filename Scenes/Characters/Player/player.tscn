@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://45hib564kwis" path="res://Scripts/Characters/Player/PlayerStatusFalling.cs" id="7_82acb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47rqi"]
-size = Vector2(14, 23)
+size = Vector2(14, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxcao"]
 size = Vector2(12, 3.5)
@@ -157,7 +157,7 @@ collision_mask = 14
 script = ExtResource("1_na1gh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_47rqi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

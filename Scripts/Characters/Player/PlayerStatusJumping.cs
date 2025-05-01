@@ -34,7 +34,7 @@ public partial class PlayerStatusJumping : PlayerStatusGravity
     {
         if (player.IsOnFloor() || player.JumpByEnemy)
         {
-            player.setVelocityY((float)(-player.JumpForce * delta));
+            player.SetVelocityY((float)(-player.JumpForce * delta));
             
             player.Audio.Play();
             player.JumpByEnemy = false; // Resetea la variable
