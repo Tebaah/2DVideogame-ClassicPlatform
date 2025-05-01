@@ -11,7 +11,7 @@ public partial class EnemyStateWalking : EnemyStateGravity
 
     public override void OnPhysicsProcess(double delta)
     {
-        ApplyGravity(delta);
+        base.OnPhysicsProcess(delta);
         Move(delta);
     }
 
@@ -20,34 +20,31 @@ public partial class EnemyStateWalking : EnemyStateGravity
     #region Methods 
 
     private void Move(double delta)
-    {
-        enemy.velocity = enemy.Velocity;
-
-        if(enemy.initialPosition > enemy.finalPosition)
+    { 
+        if (enemy.InitialPosition > enemy.FinalPosition)
         {
-            enemy.sprite.Play("Walk");
-            enemy.velocity.X -= (float)(enemy.speed * delta);
-            enemy.sprite.FlipH = false;
-            if(enemy.Position.X <= enemy.finalPosition)
+            enemy.Sprite.Play("Walk");
+            enemy.RemoveVelocityX((float)(enemy.Speed * delta));
+            enemy.Sprite.FlipH = false;
+            if(enemy.Position.X <= enemy.FinalPosition)
             {
-                enemy.velocity.X = 0;
-                enemy.initialPosition = enemy.finalPosition;
-                enemy.finalPosition = enemy.initialPosition + enemy.distance; 
+                enemy.SetVelocityX(0);
+                enemy.InitialPosition = enemy.FinalPosition;
+                enemy.FinalPosition = enemy.InitialPosition + enemy.Distance; 
             }
         }
-        else if(enemy.initialPosition < enemy.finalPosition)
+        else if(enemy.InitialPosition < enemy.FinalPosition)
         {
-            enemy.sprite.Play("Walk");
-            enemy.velocity.X += (float)(enemy.speed * delta);
-            enemy.sprite.FlipH = true;
-            if(enemy.Position.X >= enemy.finalPosition)
+            enemy.Sprite.Play("Walk");
+            enemy.AddVelocityX((float)(enemy.Speed * delta));
+            enemy.Sprite.FlipH = true;
+            if(enemy.Position.X >= enemy.FinalPosition)
             {
-                enemy.velocity.X = 0;
-                enemy.initialPosition = enemy.finalPosition;
-                enemy.finalPosition = enemy.initialPosition - enemy.distance;
+                enemy.SetVelocityX(0);
+                enemy.InitialPosition = enemy.FinalPosition;
+                enemy.FinalPosition = enemy.InitialPosition - enemy.Distance;
             }
         }
-        enemy.Velocity = enemy.velocity;
         enemy.MoveAndSlide();
 
     }

@@ -9,19 +9,24 @@ public partial class EnemyStateGravity : EnemyStateBase
 
     #region Godot Methods
 
+    public override void OnPhysicsProcess(double delta)
+    {
+        ApplyGravity(delta);
+    }
+
     #endregion
 
     #region Custom Methods
 
     public void ApplyGravity(double delta)
     {
-        if (!enemy.IsOnFloor() && enemy.enemyType == "Ground")
+        if (!enemy.IsOnFloor() && enemy.EnemyType == "Ground")
         {
-            enemy.velocity.Y += (float)(gravity * delta);
+            enemy.AddVelocityY((float)(Gravity * delta));
         }
         else
         {
-            enemy.velocity.Y = 0;
+            enemy.SetVelocityY(0);
         }
     }
 

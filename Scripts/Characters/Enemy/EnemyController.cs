@@ -7,10 +7,9 @@ public partial class EnemyController : CharacterBody2D
     [Export] public double Speed { get; set; }
     [Export] public double JumpForce { get; set; }
     [Export(PropertyHint.Enum, "Flying,Ground")] public string EnemyType { get; set; } = "Ground";
-    public float InitialPosition { get; private set; }
-    public float FinalPosition { get; private set; }
-    public float Distance { get; private set; }
-    // public Vector2 Velocity { get; set; } // Removed as it was not used
+    public float InitialPosition { get; set; }
+    public float FinalPosition { get; set; }
+    public float Distance { get; set; }
     public AnimatedSprite2D Sprite { get; private set; }
 
     private Random Random { get; } = new Random(); // Converted to a read-only property
@@ -23,6 +22,7 @@ public partial class EnemyController : CharacterBody2D
         InitializeMovementBounds();
         InitializeSprite();
         ConnectDeadStateSignal();
+
     }
 
     #endregion
@@ -31,7 +31,7 @@ public partial class EnemyController : CharacterBody2D
 
     private void InitializeMovementBounds()
     {
-        Distance = Random.Next(100, 200);
+        Distance = Random.Next(50, 100);
         InitialPosition = Position.X;
         FinalPosition = InitialPosition - Distance;
     }
@@ -70,10 +70,37 @@ public partial class EnemyController : CharacterBody2D
 
     #region Custom Methods
 
-    public void SetVelocity(float y)
+    public void AddVelocityY(float y)
+    {
+        var velocity = Velocity;
+        velocity.Y += y;
+        Velocity = velocity;
+    }
+
+    public void SetVelocityY(float y)
     {
         var velocity = Velocity;
         velocity.Y = y;
+        Velocity = velocity;
+    }
+
+    public void AddVelocityX(float x)
+    {
+        var velocity = Velocity;
+        velocity.X += x;
+        Velocity = velocity;
+    }
+
+    public void RemoveVelocityX(float x)
+    {
+        var velocity = Velocity;
+        velocity.X -= x;
+        Velocity = velocity;
+    }
+    public void SetVelocityX(float x)
+    {
+        var velocity = Velocity;
+        velocity.X = x;
         Velocity = velocity;
     }
     
