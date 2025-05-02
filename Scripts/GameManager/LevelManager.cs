@@ -49,6 +49,12 @@ public partial class LevelManager : Node2D
         EmitSignal(nameof(OnScoreUpdated), score);
     }
 
+    public void MultiplyScore(float multiplier)
+    {
+        score = (int)(score * multiplier);
+        EmitSignal(nameof(OnScoreUpdated), score);
+    }
+
     public async void StartTimer()
     {
         await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
