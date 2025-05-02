@@ -30,7 +30,7 @@ public partial class Coin : Area2D
             var levelManager = _levelNode.GetNodeOrNull<LevelManager>("LevelManager");
             if (levelManager != null)
             {
-                levelManager.AddScore(_pointCoin);
+                levelManager.MultiplyScore(ScoreMultiplier);
                 GD.Print("Coin collected!");
                 QueueFree();
             }
