@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bp2kvhq8wqca2" path="res://Scripts/ScoreInterface.cs" id="4_lnnfv"]
 [ext_resource type="PackedScene" uid="uid://cels1u31wuc8r" path="res://Scenes/Coin/coin.tscn" id="5_y45lv"]
 [ext_resource type="PackedScene" uid="uid://c5j0i7er4it0r" path="res://Scenes/Components/check_point_level.tscn" id="6_71ffg"]
-[ext_resource type="PackedScene" uid="uid://c5nx3k8xs8b2b" path="res://Scenes/Characters/Enemies/big_enemy.tscn" id="6_n0bsh"]
+[ext_resource type="PackedScene" uid="uid://chpjfpp3trs2y" path="res://Scenes/Characters/Enemies/big_enemy.tscn" id="6_n0bsh"]
 [ext_resource type="PackedScene" uid="uid://bg2o3s6fuf1a7" path="res://Scenes/Characters/Player/player.tscn" id="7_8b42i"]
 [ext_resource type="PackedScene" uid="uid://ckiyxls22yj5t" path="res://Scenes/Characters/Enemies/fly_enemy.tscn" id="7_y45lv"]
 [ext_resource type="AudioStream" uid="uid://cteaj4lpsq8ky" path="res://Assets/Music/N E S Y X.wav" id="8_lnnfv"]
@@ -427,55 +427,78 @@ vertical_alignment = 1
 
 [node name="Coin" parent="LevelManager/Coins" instance=ExtResource("5_y45lv")]
 position = Vector2(994, 178)
-_pointCoin = 10
+ScoreMultiplier = 1.25
 
 [node name="Coin2" parent="LevelManager/Coins" instance=ExtResource("5_y45lv")]
 position = Vector2(1722, 55)
-_pointCoin = 10
+ScoreMultiplier = 1.25
 
 [node name="Enemies" type="Node" parent="LevelManager"]
 
 [node name="BigEnemy" parent="LevelManager/Enemies" instance=ExtResource("6_n0bsh")]
 position = Vector2(326, 150)
-speed = 75.0
+Speed = 100.0
+Point = 5
+Distance = 50.0
 
 [node name="BigEnemy2" parent="LevelManager/Enemies" instance=ExtResource("6_n0bsh")]
 position = Vector2(675, 95)
-speed = 75.0
+Speed = 100.0
+Point = 5
+Distance = 50.0
 
 [node name="BigEnemy3" parent="LevelManager/Enemies" instance=ExtResource("6_n0bsh")]
 position = Vector2(853, 114)
-speed = 75.0
+Speed = 100.0
+Point = 5
+Distance = 50.0
 
 [node name="BigEnemy4" parent="LevelManager/Enemies" instance=ExtResource("6_n0bsh")]
 position = Vector2(1712, 186)
-speed = 75.0
+Speed = 100.0
+Point = 5
+Distance = 50.0
 
 [node name="BigEnemy5" parent="LevelManager/Enemies" instance=ExtResource("6_n0bsh")]
 position = Vector2(1030, 186)
-speed = 75.0
+Speed = 100.0
+Point = 5
+Distance = 50.0
 
 [node name="FlyEnemy" parent="LevelManager/Enemies" instance=ExtResource("7_y45lv")]
 position = Vector2(425, 129)
-speed = 50.0
-enemyType = "Flying"
+Speed = 100.0
+Point = 5
+Distance = 50.0
+EnemyType = "Flying"
 
 [node name="FlyEnemy2" parent="LevelManager/Enemies" instance=ExtResource("7_y45lv")]
 position = Vector2(211, 123)
-speed = 50.0
-enemyType = "Flying"
+Speed = 100.0
+Point = 5
+Distance = 50.0
+EnemyType = "Flying"
 
 [node name="FlyEnemy3" parent="LevelManager/Enemies" instance=ExtResource("7_y45lv")]
 position = Vector2(539, 59)
-enemyType = "Flying"
+Speed = 100.0
+Point = 5
+Distance = 50.0
+EnemyType = "Flying"
 
 [node name="FlyEnemy4" parent="LevelManager/Enemies" instance=ExtResource("7_y45lv")]
 position = Vector2(1328, 166)
-enemyType = "Flying"
+Speed = 100.0
+Point = 5
+Distance = 50.0
+EnemyType = "Flying"
 
 [node name="FlyEnemy5" parent="LevelManager/Enemies" instance=ExtResource("7_y45lv")]
 position = Vector2(1590, 132)
-enemyType = "Flying"
+Speed = 100.0
+Point = 5
+Distance = 50.0
+EnemyType = "Flying"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LevelManager"]
 stream = ExtResource("8_lnnfv")
