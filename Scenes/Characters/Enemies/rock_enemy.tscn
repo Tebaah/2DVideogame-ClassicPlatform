@@ -1,56 +1,43 @@
-[gd_scene load_steps=12 format=3 uid="uid://bcudh1x6quafk"]
+[gd_scene load_steps=7 format=3 uid="uid://d0fw3any0cq21"]
 
-[ext_resource type="Script" uid="uid://comhd6m28i306" path="res://Scripts/Characters/Enemy/EnemyController.cs" id="1_bs26i"]
+[ext_resource type="Script" uid="uid://cagk3x31losqg" path="res://Scripts/Characters/EnemyObstacle/EnemyObstacle.cs" id="1_m84d1"]
 [ext_resource type="Texture2D" uid="uid://qc1ws7kifp20" path="res://Assets/Characters/Enemy/tile_0011.png" id="2_muuph"]
 [ext_resource type="Texture2D" uid="uid://44fmcgv82g48" path="res://Assets/Characters/Enemy/tile_0012.png" id="3_bs26i"]
-[ext_resource type="Script" uid="uid://b7pxybdlnlqt4" path="res://Scripts/Characters/HitBox.cs" id="5_kqbua"]
 [ext_resource type="Script" uid="uid://mpryqscv4lcc" path="res://Scripts/StateMachine/StateMachine.cs" id="6_1w3op"]
-[ext_resource type="Script" uid="uid://bdjyxe4b5p0bi" path="res://Scripts/Characters/Enemy/EnemyStateIdle.cs" id="7_rbnfc"]
-[ext_resource type="Script" uid="uid://c44cxwuwwid2q" path="res://Scripts/Characters/Enemy/EnemyStateWalking.cs" id="8_4bhbo"]
-[ext_resource type="Script" uid="uid://bf5cx81k1swqo" path="res://Scripts/Characters/Enemy/EnemyStateDead.cs" id="9_eegbf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7fqo"]
-size = Vector2(18, 18)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32gmx"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qbplk"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_m84d1"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_muuph")
-}, {
 "duration": 1.0,
 "texture": ExtResource("3_bs26i")
 }],
 "loop": true,
-"name": &"Walk",
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_muuph")
+}],
+"loop": true,
+"name": &"Idle",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ekg1"]
+[node name="RockEnemy" type="Area2D"]
+script = ExtResource("1_m84d1")
 
-[node name="RockEnemy" type="CharacterBody2D" groups=["Enemy"]]
-collision_layer = 2
-collision_mask = 5
-script = ExtResource("1_bs26i")
-speed = 100.0
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_32gmx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_c7fqo")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_qbplk")
-animation = &"Walk"
-frame_progress = 0.975327
+sprite_frames = SubResource("SpriteFrames_m84d1")
+animation = &"Idle"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
-[node name="HitBox" type="Area2D" parent="."]
-collision_layer = 32
-script = ExtResource("5_kqbua")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("RectangleShape2D_3ekg1")
+[node name="Audio" type="AudioStreamPlayer" parent="."]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("nodeToControl", "defaultState")]
 script = ExtResource("6_1w3op")
@@ -58,12 +45,7 @@ nodeToControl = NodePath("..")
 defaultState = NodePath("StateIdle")
 
 [node name="StateIdle" type="Node" parent="StateMachine"]
-script = ExtResource("7_rbnfc")
 
-[node name="StateWalk" type="Node" parent="StateMachine"]
-script = ExtResource("8_4bhbo")
+[node name="StateFall" type="Node" parent="StateMachine"]
 
-[node name="StateDead" type="Node" parent="StateMachine"]
-script = ExtResource("9_eegbf")
-
-[connection signal="body_entered" from="HitBox" to="HitBox" method="OnHitBoxAreaEntered"]
+[node name="StateRise" type="Node" parent="StateMachine"]
