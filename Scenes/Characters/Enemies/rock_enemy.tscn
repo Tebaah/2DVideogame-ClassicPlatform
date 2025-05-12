@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0fw3any0cq21"]
+[gd_scene load_steps=10 format=3 uid="uid://d0fw3any0cq21"]
 
 [ext_resource type="Script" uid="uid://cagk3x31losqg" path="res://Scripts/Characters/EnemyObstacle/EnemyObstacle.cs" id="1_m84d1"]
 [ext_resource type="Texture2D" uid="uid://qc1ws7kifp20" path="res://Assets/Characters/Enemy/tile_0011.png" id="2_muuph"]
 [ext_resource type="Texture2D" uid="uid://44fmcgv82g48" path="res://Assets/Characters/Enemy/tile_0012.png" id="3_bs26i"]
+[ext_resource type="Script" uid="uid://c8545ra8qjaab" path="res://Scripts/Characters/EnemyObstacle/ObstacleStateIdle.cs" id="5_mjdox"]
 [ext_resource type="Script" uid="uid://mpryqscv4lcc" path="res://Scripts/StateMachine/StateMachine.cs" id="6_1w3op"]
+[ext_resource type="Script" uid="uid://cmi6fl1i7aper" path="res://Scripts/Characters/EnemyObstacle/ObstacleStateFall.cs" id="6_e5bop"]
+[ext_resource type="Script" uid="uid://swmpax2es0oo" path="res://Scripts/Characters/EnemyObstacle/ObstacleStateRise.cs" id="7_bmrfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32gmx"]
+size = Vector2(20, 112)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m84d1"]
 animations = [{
@@ -28,8 +32,10 @@ animations = [{
 
 [node name="RockEnemy" type="Area2D"]
 script = ExtResource("1_m84d1")
+FallSpeed = 250.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 46)
 shape = SubResource("RectangleShape2D_32gmx")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -42,10 +48,13 @@ animation = &"Idle"
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("nodeToControl", "defaultState")]
 script = ExtResource("6_1w3op")
 nodeToControl = NodePath("..")
-defaultState = NodePath("StateIdle")
+defaultState = NodePath("StateFall")
 
 [node name="StateIdle" type="Node" parent="StateMachine"]
+script = ExtResource("5_mjdox")
 
 [node name="StateFall" type="Node" parent="StateMachine"]
+script = ExtResource("6_e5bop")
 
 [node name="StateRise" type="Node" parent="StateMachine"]
+script = ExtResource("7_bmrfp")
