@@ -8,9 +8,12 @@ public partial class EnemyObstacle : Area2D
     [Export] public double FallSpeed { get; set; } = 100;
 
     [Export] public double RiseSpeed { get; set; } = 100;
+    public double PositionInitialY { get; set; }
     public AnimatedSprite2D AnimatedSprite { get; private set; }
     public CollisionShape2D CollisionShape { get; private set; }
     public AudioStreamPlayer AudioPlayer { get; private set; }
+    public RayCast2D RayCast { get; private set; }
+    public RayCast2D RayCastPlayer { get; private set; }
     #endregion
 
     #region Godot Methods
@@ -20,6 +23,9 @@ public partial class EnemyObstacle : Area2D
         InitializeSprite();
         InitializeCollisionShape();
         InitializeAudioPlayer();
+        InitializeRayCast();
+        InitializePosition();
+        InitializeRayCastPlayer();
     }
     #endregion
 
@@ -53,6 +59,31 @@ public partial class EnemyObstacle : Area2D
             GD.PrintErr("AudioStreamPlayer node not found.");
             return;
         }
+    }
+
+    public void InitializeRayCast()
+    {
+        RayCast = GetNodeOrNull<RayCast2D>("RayCast");
+        if (RayCast == null)
+        {
+            GD.PrintErr("RayCast2D node not found.");
+            return;
+        }
+    }
+
+    public void InitializeRayCastPlayer()
+    {
+        RayCastPlayer = GetNodeOrNull<RayCast2D>("RayCast2");
+        if (RayCastPlayer == null)
+        {
+            GD.PrintErr("RayCast2D node not found.");
+            return;
+        }
+    }
+
+    public void InitializePosition()
+    {
+        PositionInitialY = Position.Y;
     }
 
     public void ObstacleFall(float fallSpeed)
