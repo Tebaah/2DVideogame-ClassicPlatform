@@ -18,6 +18,11 @@ public partial class ObstacleStateRise : ObstacleEnemyBase
     public override void OnPhysicsProcess(double delta)
     {
         enemyObstacle.ObstacleRise((float)(enemyObstacle.RiseSpeed * delta));
+
+        if (enemyObstacle.Position.Y <= enemyObstacle.PositionInitialY)
+        {
+            stateMachine.ChangeTo("StateIdle");
+        }
     }
     
     #endregion

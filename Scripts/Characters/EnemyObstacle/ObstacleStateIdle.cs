@@ -14,6 +14,15 @@ public partial class ObstacleStateIdle : ObstacleEnemyBase
         enemyObstacle.AnimatedSprite.Play("Idle");      
         enemyObstacle.CollisionShape.Visible = true;  
     }
+
+    public override void OnPhysicsProcess(double delta)
+    {
+        if (enemyObstacle.RayCastPlayer.IsColliding())
+        {
+            stateMachine.ChangeTo("StateFall");
+        }
+    }
+
     #endregion
 
     #region Custom Methods

@@ -18,6 +18,11 @@ public partial class ObstacleStateFall : ObstacleEnemyBase
     public override void OnPhysicsProcess(double delta)
     {
         enemyObstacle.ObstacleFall((float)(enemyObstacle.FallSpeed * delta));
+        
+        if (enemyObstacle.RayCast.IsColliding())
+        {
+            stateMachine.ChangeTo("StateRise");
+        }
     }
     
     #endregion
