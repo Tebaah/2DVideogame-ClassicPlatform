@@ -1,15 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0fw3any0cq21"]
+[gd_scene load_steps=12 format=3 uid="uid://d0fw3any0cq21"]
 
 [ext_resource type="Script" uid="uid://cagk3x31losqg" path="res://Scripts/Characters/EnemyObstacle/EnemyObstacle.cs" id="1_m84d1"]
 [ext_resource type="Texture2D" uid="uid://qc1ws7kifp20" path="res://Assets/Characters/Enemy/tile_0011.png" id="2_muuph"]
 [ext_resource type="Texture2D" uid="uid://44fmcgv82g48" path="res://Assets/Characters/Enemy/tile_0012.png" id="3_bs26i"]
+[ext_resource type="Script" uid="uid://b7pxybdlnlqt4" path="res://Scripts/Characters/HitBox.cs" id="4_muuph"]
 [ext_resource type="Script" uid="uid://c8545ra8qjaab" path="res://Scripts/Characters/EnemyObstacle/ObstacleStateIdle.cs" id="5_mjdox"]
 [ext_resource type="Script" uid="uid://mpryqscv4lcc" path="res://Scripts/StateMachine/StateMachine.cs" id="6_1w3op"]
 [ext_resource type="Script" uid="uid://cmi6fl1i7aper" path="res://Scripts/Characters/EnemyObstacle/ObstacleStateFall.cs" id="6_e5bop"]
 [ext_resource type="Script" uid="uid://swmpax2es0oo" path="res://Scripts/Characters/EnemyObstacle/ObstacleStateRise.cs" id="7_bmrfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32gmx"]
-size = Vector2(20, 112)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m84d1"]
 animations = [{
@@ -30,12 +30,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmrfp"]
+size = Vector2(22, 22)
+
 [node name="RockEnemy" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_m84d1")
 FallSpeed = 250.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 46)
 shape = SubResource("RectangleShape2D_32gmx")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -45,10 +49,27 @@ animation = &"Idle"
 
 [node name="Audio" type="AudioStreamPlayer" parent="."]
 
+[node name="RayCast" type="RayCast2D" parent="."]
+target_position = Vector2(0, 10)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RayCast2" type="RayCast2D" parent="."]
+scale = Vector2(3.04802, 3.06904)
+target_position = Vector2(0, 32)
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 32
+script = ExtResource("4_muuph")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_bmrfp")
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("nodeToControl", "defaultState")]
 script = ExtResource("6_1w3op")
 nodeToControl = NodePath("..")
-defaultState = NodePath("StateFall")
+defaultState = NodePath("StateIdle")
 
 [node name="StateIdle" type="Node" parent="StateMachine"]
 script = ExtResource("5_mjdox")
@@ -58,3 +79,5 @@ script = ExtResource("6_e5bop")
 
 [node name="StateRise" type="Node" parent="StateMachine"]
 script = ExtResource("7_bmrfp")
+
+[connection signal="body_entered" from="HitBox" to="HitBox" method="OnHitBoxAreaEntered"]
