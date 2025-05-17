@@ -12,6 +12,7 @@ config_version=5
 
 config/name="TimeToHit"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
@@ -22,8 +23,7 @@ GameManager="*res://Scripts/GameManager.cs"
 
 window/size/viewport_width=360
 window/size/viewport_height=216
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -59,3 +59,8 @@ Jump={
 2d_physics/layer_5="Coin"
 2d_physics/layer_6="HitBox"
 2d_physics/layer_7="Hit"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+anti_aliasing/screen_space_roughness_limiter/enabled=false
