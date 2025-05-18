@@ -5,29 +5,20 @@ public partial class DisplayManager : Control
 {
     #region Variables
 
-    public Control homeScreen;
-    public Control selectionScreen;
-    public Control splashScreen;
-
+    public CanvasLayer HomeScreenLayer { get; private set; }
+    public CanvasLayer MainScreenLayer { get; private set; }
     #endregion
 
     #region Godot Methods
 
     public override void _Ready()
     {
-        homeScreen = GetNode<Control>("StateMachine/HomeScreen/HomeScreen");
-        selectionScreen = GetNode<Control>("StateMachine/SelectionScreen/SelectionScreen");
-        splashScreen = GetNode<Control>("StateMachine/SplashScreen/SplashScreen");
-
-        homeScreen.Visible = true;
-        selectionScreen.Visible = false;
-        splashScreen.Visible = false;
-
+        HomeScreenLayer = GetNode<CanvasLayer>("StateMachine/HomeScreenState/HomeScreen");
+        MainScreenLayer = GetNode<CanvasLayer>("StateMachine/MainScreenState/MainScreen");
     }
 
     #endregion
 
-    #region Custon Methods
-
+    #region Custom Methods
     #endregion
 }
