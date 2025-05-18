@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://btytlr4t5513u"]
+
+[node name="DisplayManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StateMachine" type="Node" parent="."]
+
+[node name="HomeScreenState" type="Node" parent="StateMachine"]
+
+[node name="MainScreenState" type="Node" parent="StateMachine"]
