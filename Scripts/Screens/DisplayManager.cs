@@ -14,7 +14,7 @@ public partial class DisplayManager : Control
     public override void _Ready()
     {
         HomeScreenLayer = GetNode<CanvasLayer>("StateMachine/HomeScreenState/HomeScreen");
-        MainScreenLayer = GetNode<CanvasLayer>("StateMachine/HomeScreenState/MainScreen");
+        MainScreenLayer = GetNode<CanvasLayer>("StateMachine/MainScreenState/MainScreen");
     }
 
     #endregion

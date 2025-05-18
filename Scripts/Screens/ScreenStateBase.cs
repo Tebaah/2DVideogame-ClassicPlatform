@@ -4,7 +4,7 @@ using System;
 public partial class ScreenStateBase : StateBase
 {
     #region Variables
-    public DisplayManager DisplayManager { get; set; }
+    public DisplayManager DisplayManagerScreen { get; set; }
     #endregion
 
     #region Godot Methods
@@ -17,9 +17,9 @@ public partial class ScreenStateBase : StateBase
             return;
         }
 
-        DisplayManager = nodeToControl as DisplayManager;
+        DisplayManagerScreen = nodeToControl as DisplayManager;
 
-        if (DisplayManager == null)
+        if (DisplayManagerScreen == null)
         {
             GD.PrintErr("Display Manager is null in AtStartState");
             return;

@@ -11,10 +11,17 @@ public partial class HomeScreenState : ScreenStateBase
     public override void AtStartState()
     {
         base.AtStartState();
-        DisplayManager.Visible = true;
+        DisplayManagerScreen.HomeScreenLayer.Visible = true;
+        ChangeToMainScreen();
     }
     #endregion
 
     #region Custom Methods
+
+    public async void ChangeToMainScreen()
+    {
+        await ToSignal(GetTree().CreateTimer(3.5f), "timeout");
+        stateMachine.ChangeTo("MainScreenState");
+    }
     #endregion
 }
