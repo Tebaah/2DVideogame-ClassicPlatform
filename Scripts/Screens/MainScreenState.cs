@@ -19,8 +19,8 @@ public partial class MainScreenState : ScreenStateBase
 
     public void ChangeVisibiliityScreen()
     {
-        DisplayManagerScreen.MainScreenLayer.Visible = false;
-        DisplayManagerScreen.HomeScreenLayer.Visible = true;
+        DisplayManagerScreen.MainScreenLayer.Visible = true;
+        DisplayManagerScreen.HomeScreenLayer.Visible = false;
     }
     
 
