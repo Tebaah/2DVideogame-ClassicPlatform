@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=4 uid="uid://v8cy8vgnbsbp"]
 
-[ext_resource type="Script" uid="uid://c4kskla0t181y" path="res://Scripts/GameManager/LevelManager.cs" id="1_nraam"]
+[ext_resource type="Script" uid="uid://c4kskla0t181y" path="res://Scripts/Manager/LevelManager.cs" id="1_nraam"]
 [ext_resource type="Texture2D" uid="uid://brwt4jknnh357" path="res://Assets/Levels/tilemap-backgrounds.png" id="2_n0bsh"]
 [ext_resource type="Texture2D" uid="uid://bqe5nkn6gdh0b" path="res://Assets/Levels/tilemap_packed.png" id="3_4eusg"]
 [ext_resource type="Script" uid="uid://bp2kvhq8wqca2" path="res://Scripts/ScoreInterface.cs" id="4_lnnfv"]
