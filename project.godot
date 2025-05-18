@@ -23,7 +23,7 @@ GameManager="*res://Scripts/GameManager.cs"
 
 window/size/viewport_width=360
 window/size/viewport_height=216
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
