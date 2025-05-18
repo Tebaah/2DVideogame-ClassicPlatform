@@ -1,13 +1,28 @@
-[gd_scene format=3 uid="uid://btytlr4t5513u"]
+[gd_scene load_steps=5 format=3 uid="uid://btytlr4t5513u"]
+
+[ext_resource type="Script" uid="uid://l8behktcyau7" path="res://Scripts/Screens/DisplayManager.cs" id="1_hbnin"]
+[ext_resource type="Script" uid="uid://mpryqscv4lcc" path="res://Scripts/StateMachine/StateMachine.cs" id="1_ojrgb"]
+[ext_resource type="PackedScene" uid="uid://brnowckjblx7e" path="res://Scenes/Screen/home_screen.tscn" id="2_v0evm"]
+[ext_resource type="PackedScene" uid="uid://bikklfokya82c" path="res://Scenes/Screen/main_screen.tscn" id="3_qyxmx"]
 
 [node name="DisplayManager" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_hbnin")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("nodeToControl", "defaultState")]
+script = ExtResource("1_ojrgb")
+nodeToControl = NodePath("..")
+defaultState = NodePath("HomeScreenState")
 
 [node name="HomeScreenState" type="Node" parent="StateMachine"]
 
+[node name="HomeScreen" parent="StateMachine/HomeScreenState" instance=ExtResource("2_v0evm")]
+visible = false
+
 [node name="MainScreenState" type="Node" parent="StateMachine"]
+
+[node name="MainScreen" parent="StateMachine/MainScreenState" instance=ExtResource("3_qyxmx")]
+visible = false
