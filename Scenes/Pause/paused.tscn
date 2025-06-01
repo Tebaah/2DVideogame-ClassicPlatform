@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyjyymx4ymaro"]
+
+[ext_resource type="Script" uid="uid://cev1e26mtnmmw" path="res://Scripts/Pause/Paused.cs" id="1_fjnqb"]
+
+[node name="Paused" type="CanvasLayer"]
+script = ExtResource("1_fjnqb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.051971, 0.0519709, 0.051971, 0.2)

@@ -12,15 +12,11 @@ public partial class PlayerStatusJumping : PlayerStatusGravity
     public override void OnPhysicsProcess(double delta)
     {
         base.OnPhysicsProcess(delta);
-        
-        player.Animations.Play("Jump");
 
         ImpulseForTheJump(delta);
 
         player.SetVelocityX((float)(Input.GetAxis("Left", "Right") * player.Speed * delta));
 
-        // ApplyGravity(delta);
-        
         player.MoveAndSlide();
   
         ChangeToFalling();
@@ -34,13 +30,17 @@ public partial class PlayerStatusJumping : PlayerStatusGravity
     {
         if (player.IsOnFloor() || player.JumpByEnemy)
         {
+            ApllySoundAndAnimation();
             player.SetVelocityY((float)(-player.JumpForce * delta));
-            
-            player.Audio.Play();
             player.JumpByEnemy = false; // Resetea la variable
         }
     }
 
+    private void ApllySoundAndAnimation()
+    {
+        player.Audio.Play();
+        player.Animations.Play("Jump");
+    }
     private void ChangeToFalling()
     {
         if (player.Velocity.Y > 0)
