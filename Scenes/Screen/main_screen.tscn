@@ -53,6 +53,7 @@ grow_vertical = 2
 
 [node name="StartButton" type="Button" parent="Control/ButtonContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../ContinueButton")
 theme_override_fonts/font = ExtResource("1_3yjl4")
 theme_override_font_sizes/font_size = 10
 text = "Start"
@@ -60,6 +61,7 @@ script = ExtResource("2_6sdoj")
 
 [node name="ContinueButton" type="Button" parent="Control/ButtonContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
 theme_override_fonts/font = ExtResource("1_3yjl4")
 theme_override_font_sizes/font_size = 10
 text = "Continue"
