@@ -537,7 +537,7 @@ position = Vector2(1764, 189)
 
 [node name="Player" parent="LevelManager" instance=ExtResource("7_8b42i")]
 z_index = 1
-position = Vector2(578, 82)
+position = Vector2(77, 186)
 Speed = 7500.0
 JumpForce = 16500.0
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bikklfokya82c"]
+[gd_scene load_steps=3 format=3 uid="uid://bikklfokya82c"]
 
 [ext_resource type="FontFile" uid="uid://clgphkwxq7op2" path="res://Assets/Fonts/Orbitron-VariableFont_wght.ttf" id="1_3yjl4"]
+[ext_resource type="Script" uid="uid://cmyf8ooi6vwcs" path="res://Scripts/Screens/StartButton.cs" id="2_6sdoj"]
 
 [node name="MainScreen" type="CanvasLayer"]
 
@@ -55,9 +56,12 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_3yjl4")
 theme_override_font_sizes/font_size = 10
 text = "Start"
+script = ExtResource("2_6sdoj")
 
 [node name="ContinueButton" type="Button" parent="Control/ButtonContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_3yjl4")
 theme_override_font_sizes/font_size = 10
 text = "Continue"
+
+[connection signal="pressed" from="Control/ButtonContainer/StartButton" to="Control/ButtonContainer/StartButton" method="OnStartButtonPressed"]
