@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://v8cy8vgnbsbp"]
+[gd_scene load_steps=25 format=4 uid="uid://v8cy8vgnbsbp"]
 
 [ext_resource type="Script" uid="uid://c4kskla0t181y" path="res://Scripts/Manager/LevelManager.cs" id="1_nraam"]
 [ext_resource type="Texture2D" uid="uid://brwt4jknnh357" path="res://Assets/Levels/tilemap-backgrounds.png" id="2_n0bsh"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c5j0i7er4it0r" path="res://Scenes/Components/check_point_level.tscn" id="6_71ffg"]
 [ext_resource type="PackedScene" uid="uid://chpjfpp3trs2y" path="res://Scenes/Characters/Enemies/big_enemy.tscn" id="6_n0bsh"]
 [ext_resource type="PackedScene" uid="uid://bg2o3s6fuf1a7" path="res://Scenes/Characters/Player/player.tscn" id="7_8b42i"]
+[ext_resource type="Script" uid="uid://c4kcqlbsu7hk6" path="res://Scripts/ContinueButton.cs" id="7_d8j35"]
 [ext_resource type="PackedScene" uid="uid://ckiyxls22yj5t" path="res://Scenes/Characters/Enemies/fly_enemy.tscn" id="7_y45lv"]
 [ext_resource type="AudioStream" uid="uid://cteaj4lpsq8ky" path="res://Assets/Music/N E S Y X.wav" id="8_lnnfv"]
 [ext_resource type="PackedScene" uid="uid://dyjyymx4ymaro" path="res://Scenes/Pause/paused.tscn" id="11_y45lv"]
@@ -448,6 +449,26 @@ text = "TIME:20SEC"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MessageContainer" type="HBoxContainer" parent="LevelManager/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -66.0
+offset_right = 20.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextMessage" type="Label" parent="LevelManager/CanvasLayer/Control/MessageContainer"]
+visible = false
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MenuContainer" type="VBoxContainer" parent="LevelManager/CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 8
@@ -466,6 +487,7 @@ grow_vertical = 2
 visible = false
 layout_mode = 2
 text = "Next Level"
+script = ExtResource("7_d8j35")
 
 [node name="ResetButton" type="Button" parent="LevelManager/CanvasLayer/Control/MenuContainer"]
 visible = false
@@ -561,7 +583,7 @@ position = Vector2(1764, 189)
 
 [node name="Player" parent="LevelManager" instance=ExtResource("7_8b42i")]
 z_index = 1
-position = Vector2(77, 186)
+position = Vector2(1508, 113)
 Speed = 7500.0
 JumpForce = 16500.0
 
@@ -569,3 +591,4 @@ JumpForce = 16500.0
 process_mode = 3
 
 [connection signal="timeout" from="LevelManager/TimerManager/Timer" to="LevelManager" method="OnTimerTimeout"]
+[connection signal="pressed" from="LevelManager/CanvasLayer/Control/MenuContainer/ContinueButton" to="LevelManager/CanvasLayer/Control/MenuContainer/ContinueButton" method="OnContinueButtonPressed"]
