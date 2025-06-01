@@ -7,6 +7,12 @@ public partial class StartButton : Button
     #endregion
 
     #region Godot Methods
+
+    public override void _Ready()
+    {
+        GrabFocus();
+    }
+
     #endregion
 
     #region Custom Methods
