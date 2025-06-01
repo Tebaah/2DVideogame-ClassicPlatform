@@ -40,6 +40,8 @@ public partial class LevelManager : Node
     /// </summary>
     private CheckPointLevel _checkPointLevel;
 
+    [Signal] public delegate void NextLevelEventHandler();
+    [Signal] public delegate void ResetLevelEventHandler();
     #endregion
 
     #region Godot Methods
@@ -71,11 +73,13 @@ public partial class LevelManager : Node
     {
         if (score >= PointsToWin)
         {
+            EmitSignal(nameof(NextLevel));
             GD.Print("Checkpoint reached with score: " + score);
             // TODO: Implementar lógica para manejar el checkpoint alcanzado, como guardar el estado del juego o avanzar al siguiente nivel.
         }
         else
         {
+            EmitSignal(nameof(ResetLevel));
             GD.Print("Checkpoint reached, but score is not enough: " + score);
             // TODO: Implementar lógica para manejar el checkpoint alcanzado, como reiniciar el nivel por no alcanzar el puntaje necesario.
         }
