@@ -10,7 +10,6 @@
 - Mecánica de tiempo limitado por nivel.
 - Eliminación de enemigos para acumular puntaje.
 - Desbloqueo progresivo de niveles.
-- Estética basada en figuras geométricas abstractas.
 
 ## Mecánicas del Juego
 
@@ -19,10 +18,13 @@
 - Movimiento de izquierda a derecha.
 - Salto normal.
 - Eliminar enemigos saltando sobre ellos.
+- Potenciar el puntaje con elementos extras como monedas.
+- Disminuye el puntaje al ser tocado por el enemigo.
 
 ### Enemigos
 
 - Movimiento de izquierda a derecha.
+- MOvimiento de caida libre al acercarse.
 - Se eliminan cuando el jugador salta sobre ellos.
 - Otorgan puntaje al ser eliminados.
 
@@ -36,26 +38,26 @@
 
 - Tiempo restante.
 - Puntaje actual.
-- Cantidad de vidas.
+- Botones de pause, continuar y reiniciar el nivel.
 
 ## Elementos del Nivel
 
 - Plataformas estáticas y móviles.
 - Coleccionables (monedas que aumentan el puntaje).
+- Obstaculos (elementos que aumenta la dificulatad).
 
 ## Pantallas del Juego
 
 - **Pantalla de Inicio**: Muestra el título y el logo del juego. Después de cierto tiempo, cambia automáticamente a la pantalla de selección de nivel.
-- **Pantalla de Selección de Nivel**: Permite seleccionar un nivel desbloqueado.
+- **Pantalla de Inicio de Nivel**: Permite iniciar el nivel.
 - **Pantalla de Juego**: Contiene la jugabilidad principal.
-- **Pantalla de Pausa**: Permite reanudar o salir al menú principal.
-- **Pantalla de Game Over**: Muestra la opción de reiniciar el juego desde el inicio.
+- **Pantalla de Pausa**: Permite detener el juego principal.
+
 
 ## Tecnologías Utilizadas
 
 - **Motor**: Godot 4
 - **Lenguaje de programación**: C#
-- **Diseño de elementos visuales**: Inkscape
 
 ## Notas Técnicas
 
@@ -70,4 +72,5 @@ El objetivo principal del desarrollo de este juego es mejorar la programación e
 
 ## Créditos
 
-**Desarrollador**: Tebaah
+- **Assets**: Kenney https://www.kenney.nl/ 
+- **Sound effects**: jsfxr https://sfxr.me/
