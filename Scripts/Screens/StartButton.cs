@@ -19,7 +19,7 @@ public partial class StartButton : Button
 
     public void OnStartButtonPressed()
     {
-        GetTree().ChangeSceneToFile("res://Scenes/Level/level_2.tscn");
+        GetTree().ChangeSceneToFile("res://Scenes/Level/level_1.tscn");
     }
     #endregion
 
