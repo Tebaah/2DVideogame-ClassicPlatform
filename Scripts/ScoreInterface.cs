@@ -59,6 +59,7 @@ public partial class ScoreInterface : CanvasLayer
     public void OnNextLevel()
     {
         _continueButton.Visible = true;
+        _continueButton.GrabFocus();
         _textMessage.Text = "Checkpoint reached!";
         _textMessage.Visible = true;
     }
@@ -66,6 +67,7 @@ public partial class ScoreInterface : CanvasLayer
     public void OnResetLevel()
     {
         _resetButton.Visible = true;
+        _resetButton.GrabFocus();
         _textMessage.Text = "Checkpoint reached! Press Reset to try again.";
         _textMessage.Visible = true;
     }
