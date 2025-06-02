@@ -32,6 +32,7 @@ public partial class Paused : CanvasLayer
         if (Input.IsActionJustPressed("Pause"))
         {
             _pauseButton.Visible = !_pauseButton.Visible;
+            _pauseButton.GrabFocus();
             GetTree().Paused = !GetTree().Paused;
             _colorRect.Visible = !_colorRect.Visible;
 		}

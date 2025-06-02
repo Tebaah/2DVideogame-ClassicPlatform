@@ -19,6 +19,13 @@ public partial class ScoreInterface : CanvasLayer
     private Label _timeLabel;
     private TimerManager _timerManager;
 
+    private Button _continueButton;
+    private Button _resetButton;
+
+    private LevelManager _nextLevelManager;
+    private LevelManager _resetLevelManager;
+    private Label _textMessage;
+
     #endregion
 
     #region Godot Methods
@@ -31,6 +38,16 @@ public partial class ScoreInterface : CanvasLayer
         _scoreLabel = GetNode<Label>("Control/Container/ScoreLabel");
         _scoreLabel.Text = "Score: 0";
         _timeLabel = GetNode<Label>("Control/Container/TimeLabel");
+        _continueButton = GetNode<Button>("Control/MenuContainer/ContinueButton");
+        _resetButton = GetNode<Button>("Control/MenuContainer/ResetButton");
+
+        _nextLevelManager = (LevelManager)GetParent();
+        _resetLevelManager = (LevelManager)GetParent();
+
+        _nextLevelManager.Connect("NextLevel", new Callable(this, "OnNextLevel"));
+        _resetLevelManager.Connect("ResetLevel", new Callable(this, "OnResetLevel"));
+
+        _textMessage = GetNode<Label>("Control/MessageContainer/TextMessage");
 
         // Solo para mostrar el tiempo inicial antes de que empiece el cronómetro
         ShowInitialTime();
@@ -38,6 +55,22 @@ public partial class ScoreInterface : CanvasLayer
     #endregion
 
     #region Custom Methods
+
+    public void OnNextLevel()
+    {
+        _continueButton.Visible = true;
+        _continueButton.GrabFocus();
+        _textMessage.Text = "Checkpoint reached!";
+        _textMessage.Visible = true;
+    }
+
+    public void OnResetLevel()
+    {
+        _resetButton.Visible = true;
+        _resetButton.GrabFocus();
+        _textMessage.Text = "Checkpoint reached! Press Reset to try again.";
+        _textMessage.Visible = true;
+    }
 
     /// <summary>
     /// Muestra el tiempo inicial en la interfaz, obteniéndolo desde TimerManager.
