@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://v8cy8vgnbsbp"]
+[gd_scene load_steps=27 format=4 uid="uid://v8cy8vgnbsbp"]
 
 [ext_resource type="Script" uid="uid://c4kskla0t181y" path="res://Scripts/Manager/LevelManager.cs" id="1_nraam"]
 [ext_resource type="Texture2D" uid="uid://brwt4jknnh357" path="res://Assets/Levels/tilemap-backgrounds.png" id="2_n0bsh"]
@@ -9,9 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://cels1u31wuc8r" path="res://Scenes/Coin/coin.tscn" id="5_y45lv"]
 [ext_resource type="PackedScene" uid="uid://c5j0i7er4it0r" path="res://Scenes/Components/check_point_level.tscn" id="6_71ffg"]
 [ext_resource type="PackedScene" uid="uid://chpjfpp3trs2y" path="res://Scenes/Characters/Enemies/big_enemy.tscn" id="6_n0bsh"]
+[ext_resource type="FontFile" uid="uid://clgphkwxq7op2" path="res://Assets/Fonts/Orbitron-VariableFont_wght.ttf" id="7_1kfys"]
 [ext_resource type="PackedScene" uid="uid://bg2o3s6fuf1a7" path="res://Scenes/Characters/Player/player.tscn" id="7_8b42i"]
 [ext_resource type="Script" uid="uid://c4kcqlbsu7hk6" path="res://Scripts/ContinueButton.cs" id="7_d8j35"]
 [ext_resource type="PackedScene" uid="uid://ckiyxls22yj5t" path="res://Scenes/Characters/Enemies/fly_enemy.tscn" id="7_y45lv"]
+[ext_resource type="Script" uid="uid://cp0ewmwbqltqc" path="res://Scripts/ResetButton.cs" id="8_d52fh"]
 [ext_resource type="AudioStream" uid="uid://cteaj4lpsq8ky" path="res://Assets/Music/N E S Y X.wav" id="8_lnnfv"]
 [ext_resource type="PackedScene" uid="uid://dyjyymx4ymaro" path="res://Scenes/Pause/paused.tscn" id="11_y45lv"]
 
@@ -364,7 +366,7 @@ physics_layer_0/collision_mask = 3
 navigation_layer_0/layers = 0
 sources/1 = SubResource("TileSetAtlasSource_c458c")
 
-[node name="Level2" type="Node2D"]
+[node name="Level_2" type="Node2D"]
 metadata/_edit_vertical_guides_ = [720.0, 360.0, 1080.0, 1440.0, 1800.0]
 
 [node name="LevelManager" type="Node" parent="."]
@@ -435,6 +437,7 @@ grow_horizontal = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 8.56
+theme_override_fonts/font = ExtResource("7_1kfys")
 theme_override_font_sizes/font_size = 14
 text = "Score: 0"
 horizontal_alignment = 1
@@ -444,6 +447,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 8.56
+theme_override_fonts/font = ExtResource("7_1kfys")
 theme_override_font_sizes/font_size = 14
 text = "TIME:20SEC"
 horizontal_alignment = 1
@@ -466,6 +470,9 @@ grow_vertical = 2
 [node name="TextMessage" type="Label" parent="LevelManager/CanvasLayer/Control/MessageContainer"]
 visible = false
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_1kfys")
+theme_override_font_sizes/font_size = 14
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -486,13 +493,18 @@ grow_vertical = 2
 [node name="ContinueButton" type="Button" parent="LevelManager/CanvasLayer/Control/MenuContainer"]
 visible = false
 layout_mode = 2
+focus_neighbor_bottom = NodePath(".")
+theme_override_fonts/font = ExtResource("7_1kfys")
 text = "Next Level"
 script = ExtResource("7_d8j35")
 
 [node name="ResetButton" type="Button" parent="LevelManager/CanvasLayer/Control/MenuContainer"]
 visible = false
 layout_mode = 2
+focus_neighbor_bottom = NodePath(".")
+theme_override_fonts/font = ExtResource("7_1kfys")
 text = "Reset Level"
+script = ExtResource("8_d52fh")
 
 [node name="Coins" type="Node" parent="LevelManager"]
 
@@ -583,7 +595,7 @@ position = Vector2(1764, 189)
 
 [node name="Player" parent="LevelManager" instance=ExtResource("7_8b42i")]
 z_index = 1
-position = Vector2(1508, 113)
+position = Vector2(81, 186)
 Speed = 7500.0
 JumpForce = 16500.0
 
@@ -592,3 +604,4 @@ process_mode = 3
 
 [connection signal="timeout" from="LevelManager/TimerManager/Timer" to="LevelManager" method="OnTimerTimeout"]
 [connection signal="pressed" from="LevelManager/CanvasLayer/Control/MenuContainer/ContinueButton" to="LevelManager/CanvasLayer/Control/MenuContainer/ContinueButton" method="OnContinueButtonPressed"]
+[connection signal="pressed" from="LevelManager/CanvasLayer/Control/MenuContainer/ResetButton" to="LevelManager/CanvasLayer/Control/MenuContainer/ResetButton" method="OnResetButtonPressed"]
