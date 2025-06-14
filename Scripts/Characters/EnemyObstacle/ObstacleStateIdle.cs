@@ -17,7 +17,7 @@ public partial class ObstacleStateIdle : ObstacleEnemyBase
 
     public override void OnPhysicsProcess(double delta)
     {
-        if (enemyObstacle.RayCastPlayer.IsColliding())
+        if (enemyObstacle.RayCastPlayer.IsColliding() || enemyObstacle.RaycastPlayer2.IsColliding())
         {
             stateMachine.ChangeTo("StateFall");
         }

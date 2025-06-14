@@ -55,8 +55,12 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="RayCast2" type="RayCast2D" parent="."]
-scale = Vector2(3.04802, 3.06904)
-target_position = Vector2(0, 32)
+position = Vector2(-9, 0)
+target_position = Vector2(0, 100)
+
+[node name="RayCast3" type="RayCast2D" parent="."]
+position = Vector2(9, 0)
+target_position = Vector2(0, 100)
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 32
