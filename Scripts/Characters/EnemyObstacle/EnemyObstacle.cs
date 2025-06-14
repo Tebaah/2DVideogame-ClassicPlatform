@@ -14,6 +14,7 @@ public partial class EnemyObstacle : Area2D
     public AudioStreamPlayer AudioPlayer { get; private set; }
     public RayCast2D RayCast { get; private set; }
     public RayCast2D RayCastPlayer { get; private set; }
+    public RayCast2D RaycastPlayer2 { get; private set; }
     #endregion
 
     #region Godot Methods
@@ -76,7 +77,13 @@ public partial class EnemyObstacle : Area2D
         RayCastPlayer = GetNodeOrNull<RayCast2D>("RayCast2");
         if (RayCastPlayer == null)
         {
-            GD.PrintErr("RayCast2D node not found.");
+            GD.PrintErr("RayCast2 node not found.");
+            return;
+        }
+        RaycastPlayer2 = GetNodeOrNull<RayCast2D>("RayCast3");
+        if (RaycastPlayer2 == null)
+        {
+            GD.PrintErr("RayCast3 node not found.");
             return;
         }
     }
