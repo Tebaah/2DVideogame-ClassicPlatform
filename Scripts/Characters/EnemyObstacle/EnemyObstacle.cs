@@ -6,7 +6,6 @@ public partial class EnemyObstacle : Area2D
     #region Variables
 
     [Export] public double FallSpeed { get; set; } = 100;
-
     [Export] public double RiseSpeed { get; set; } = 100;
     public double PositionInitialY { get; set; }
     public AnimatedSprite2D AnimatedSprite { get; private set; }
@@ -91,25 +90,6 @@ public partial class EnemyObstacle : Area2D
     public void InitializePosition()
     {
         PositionInitialY = Position.Y;
-    }
-
-    public void ObstacleFall(float fallSpeed)
-    {
-        Position = new Vector2(Position.X, Position.Y + fallSpeed); // Move down by fallSpeed units
-    }
-
-    public void ObstacleRise(float riseSpeed)
-    {
-        Position = new Vector2(Position.X, Position.Y - riseSpeed); // Move up by riseSpeed units
-    }
-
-    public void OnBodyEntered(Node2D body)
-    {
-        if (body.IsInGroup("Player"))
-        {
-            // Handle collision with player
-            GD.Print("Player has entered the enemy obstacle area.");
-        }
     }
     #endregion
 }
