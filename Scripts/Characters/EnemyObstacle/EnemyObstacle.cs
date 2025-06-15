@@ -91,15 +91,5 @@ public partial class EnemyObstacle : Area2D
     {
         PositionInitialY = Position.Y;
     }
-
-    public void ObstacleFall(float fallSpeed)
-    {
-        Position = new Vector2(Position.X, Position.Y + fallSpeed); // Move down by fallSpeed units
-    }
-
-    public void ObstacleRise(float riseSpeed)
-    {
-        Position = new Vector2(Position.X, Position.Y - riseSpeed); // Move up by riseSpeed units
-    }
     #endregion
 }
