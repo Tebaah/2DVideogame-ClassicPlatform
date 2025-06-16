@@ -17,16 +17,20 @@ public partial class ObstacleStateRise : ObstacleEnemyBase
 
     public override void OnPhysicsProcess(double delta)
     {
-        enemyObstacle.ObstacleRise((float)(enemyObstacle.RiseSpeed * delta));
+        ObstacleRise((float)(enemyObstacle.RiseSpeed * delta));
 
         if (enemyObstacle.Position.Y <= enemyObstacle.PositionInitialY)
         {
             stateMachine.ChangeTo("StateIdle");
         }
     }
-    
+
     #endregion
 
     #region Custom Methods
+    private void ObstacleRise(float riseSpeed)
+    {
+        enemyObstacle.Position = new Vector2(enemyObstacle.Position.X, enemyObstacle.Position.Y - riseSpeed);
+    }
     #endregion
 }
